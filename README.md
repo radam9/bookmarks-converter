@@ -1,9 +1,9 @@
 # Bookmarks_Converter
 
 ---
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/radam9/bookmarks_converter/build?style=flat-square)
-![GitHub](https://img.shields.io/github/license/radam9/bookmarks_converter?style=flat-square)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bookmarks-converter?style=flat-square)
+[![image](https://img.shields.io/github/workflow/status/radam9/bookmarks_converter/build-deploy?style=flat-square)](https://github.com/radam9/bookmarks_converter)
+[![image](https://img.shields.io/github/license/radam9/bookmarks_converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
+[![image](https://img.shields.io/pypi/pyversions/bookmarks-converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
 
 
 Bookmarks Converter is a package that converts the webpage bookmarks
@@ -21,11 +21,11 @@ To see example of the structure or layout of the `DataBase`, `HTML` or `JSON` ve
 ### Python and OS Support
 The package has been tested on Github Actions with the following OSs and Python versions:
 
-| OS \ Python      |       `3.9`        |       `3.8`        |       `3.7`        |       `3.6`        |
-| :--------------- | :----------------: | :----------------: | :----------------: | :----------------: |
-| `macos-latest`   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| `ubuntu-latest`  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| `windows-latest` | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OS \ Python      |  `3.9`  |  `3.8`  |  `3.7`  |  `3.6`  |
+| :--------------- | :-----: | :-----: | :-----: | :-----: |
+| `macos-latest`   | &check; | &check; | &check; | &check; |
+| `ubuntu-latest`  | &check; | &check; | &check; | &check; |
+| `windows-latest` | &check; | &check; | &check; | &check; |
 
 
 ---
@@ -36,14 +36,14 @@ The package relies on the following libraries:
 
 ---
 ### Install
-Bookmarks Converter is available on [PYPI](https://pypi.org)
+Bookmarks Converter is available on [PYPI](https://pypi.org/project/bookmarks-converter/)
 ```bash
 python -m pip install bookmarks-converter
 ```
 
 ---
 ### Test
-To test the package you will need to clone the [git repository](https://github.com/radam9/bookmarks_converter)
+To test the package you will need to clone the [git repository](https://github.com/radam9/bookmarks_converter).
 
 ```bash
 # Cloning with HTTPS

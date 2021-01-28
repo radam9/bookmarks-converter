@@ -1,4 +1,4 @@
-name: main-build
+name: build-deploy
 
 on:
   push:
@@ -55,6 +55,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1.1.1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
       - name: Build and Publish to PYPI
         env:

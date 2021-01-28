@@ -1,0 +1,399 @@
+{
+   "checksum": "8ed13eba316b3cb6689ffe0e4fffa678",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13244224031000000",
+            "id": "5",
+            "name": "Getting Started",
+            "type": "url",
+            "url": "https://www.mozilla.org/en-US/firefox/central/"
+         }, {
+            "children": [ {
+               "date_added": "13244224395000000",
+               "id": "7",
+               "name": "Twitter. It’s what’s happening / Twitter",
+               "type": "url",
+               "url": "https://twitter.com/?lang=en"
+            }, {
+               "date_added": "13244224407000000",
+               "id": "8",
+               "name": "Facebook - Log In or Sign Up",
+               "type": "url",
+               "url": "https://www.facebook.com/"
+            }, {
+               "date_added": "13244224417000000",
+               "id": "9",
+               "name": "Instagram",
+               "type": "url",
+               "url": "https://www.instagram.com/?hl=en"
+            }, {
+               "date_added": "13244224509000000",
+               "id": "10",
+               "name": "WhatsApp",
+               "type": "url",
+               "url": "https://www.whatsapp.com/"
+            }, {
+               "date_added": "13244224522000000",
+               "id": "11",
+               "name": "reddit: the front page of the internet",
+               "type": "url",
+               "url": "https://www.reddit.com/"
+            }, {
+               "date_added": "13244224530000000",
+               "id": "12",
+               "name": "Pinterest",
+               "type": "url",
+               "url": "https://www.pinterest.com/"
+            }, {
+               "date_added": "13244224541000000",
+               "id": "13",
+               "name": "LinkedIn: Log In or Sign Up",
+               "type": "url",
+               "url": "https://www.linkedin.com/"
+            }, {
+               "date_added": "13244224547000000",
+               "id": "14",
+               "name": "Discord | Your Place to Talk and Hang Out",
+               "type": "url",
+               "url": "https://discord.com/"
+            } ],
+            "date_added": "13244233436520764",
+            "date_modified": "0",
+            "id": "6",
+            "name": "Social",
+            "type": "folder"
+         }, {
+            "date_added": "13244232634000000",
+            "id": "15",
+            "name": "Outlook – free personal email and calendar from Microsoft",
+            "type": "url",
+            "url": "https://outlook.live.com/owa/"
+         }, {
+            "children": [ {
+               "date_added": "13244224031000000",
+               "id": "18",
+               "name": "Help and Tutorials",
+               "type": "url",
+               "url": "https://support.mozilla.org/en-US/products/firefox"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "19",
+               "name": "Customize Firefox",
+               "type": "url",
+               "url": "https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "20",
+               "name": "Get Involved",
+               "type": "url",
+               "url": "https://www.mozilla.org/en-US/contribute/"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "21",
+               "name": "About Us",
+               "type": "url",
+               "url": "https://www.mozilla.org/en-US/about/"
+            } ],
+            "date_added": "13244233436522361",
+            "date_modified": "0",
+            "id": "17",
+            "name": "Mozilla Firefox",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13244224031000000",
+               "id": "23",
+               "name": "Ubuntu",
+               "type": "url",
+               "url": "http://www.ubuntu.com/"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "24",
+               "name": "Ubuntu Wiki (community-edited website)",
+               "type": "url",
+               "url": "http://wiki.ubuntu.com/"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "25",
+               "name": "Make a Support Request to the Ubuntu Community",
+               "type": "url",
+               "url": "https://answers.launchpad.net/ubuntu/+addquestion"
+            }, {
+               "date_added": "13244224031000000",
+               "id": "26",
+               "name": "Debian (Ubuntu is based on Debian)",
+               "type": "url",
+               "url": "http://www.debian.org/"
+            } ],
+            "date_added": "13244233436522614",
+            "date_modified": "0",
+            "id": "22",
+            "name": "Ubuntu and Free Software links",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13244224192000000",
+                  "id": "29",
+                  "name": "Welcome to Python.org",
+                  "type": "url",
+                  "url": "https://www.python.org/"
+               }, {
+                  "date_added": "13244224211000000",
+                  "id": "30",
+                  "name": "cplusplus.com - The C++ Resources Network",
+                  "type": "url",
+                  "url": "https://www.cplusplus.com/"
+               }, {
+                  "date_added": "13244224281000000",
+                  "id": "31",
+                  "name": "Java Software | Oracle",
+                  "type": "url",
+                  "url": "https://www.oracle.com/java/"
+               }, {
+                  "children": [ {
+                     "date_added": "13244224356000000",
+                     "id": "33",
+                     "name": "Ruby Programming Language",
+                     "type": "url",
+                     "url": "https://www.ruby-lang.org/en/"
+                  }, {
+                     "date_added": "13244224603000000",
+                     "id": "34",
+                     "name": "Bash - GNU Project - Free Software Foundation",
+                     "type": "url",
+                     "url": "https://www.gnu.org/software/bash/"
+                  }, {
+                     "date_added": "13244224682000000",
+                     "id": "35",
+                     "name": "The Go Programming Language",
+                     "type": "url",
+                     "url": "https://golang.org/"
+                  }, {
+                     "date_added": "13244224700000000",
+                     "id": "36",
+                     "name": "The Julia Programming Language",
+                     "type": "url",
+                     "url": "https://julialang.org/"
+                  }, {
+                     "date_added": "13244224735000000",
+                     "id": "37",
+                     "name": "MATLAB - MathWorks - MATLAB & Simulink",
+                     "type": "url",
+                     "url": "https://www.mathworks.com/products/matlab.html"
+                  }, {
+                     "date_added": "13244224744000000",
+                     "id": "38",
+                     "name": "PHP: Hypertext Preprocessor",
+                     "type": "url",
+                     "url": "https://www.php.net/"
+                  }, {
+                     "date_added": "13244224752000000",
+                     "id": "39",
+                     "name": "The Perl Programming Language - www.perl.org",
+                     "type": "url",
+                     "url": "https://www.perl.org/"
+                  }, {
+                     "date_added": "13244224759000000",
+                     "id": "40",
+                     "name": "Swift.org - Welcome to Swift.org",
+                     "type": "url",
+                     "url": "https://swift.org/"
+                  } ],
+                  "date_added": "13244233436522972",
+                  "date_modified": "0",
+                  "id": "32",
+                  "name": "Others",
+                  "type": "folder"
+               } ],
+               "date_added": "13244233436522825",
+               "date_modified": "0",
+               "id": "28",
+               "name": "Languages",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13244230980000000",
+                  "id": "42",
+                  "name": "The world’s leading software development platform · GitHub",
+                  "type": "url",
+                  "url": "https://github.com/"
+               }, {
+                  "date_added": "13244230989000000",
+                  "id": "43",
+                  "name": "Projects · Explore · GitLab",
+                  "type": "url",
+                  "url": "https://gitlab.com/explore"
+               }, {
+                  "date_added": "13244231003000000",
+                  "id": "44",
+                  "name": "Travis CI - Test and Deploy Your Code with Confidence",
+                  "type": "url",
+                  "url": "https://travis-ci.org/"
+               }, {
+                  "date_added": "13244231032000000",
+                  "id": "45",
+                  "name": "Bitbucket | The Git solution for professional teams",
+                  "type": "url",
+                  "url": "https://bitbucket.org/product"
+               }, {
+                  "date_added": "13244231045000000",
+                  "id": "46",
+                  "name": "Jenkins",
+                  "type": "url",
+                  "url": "https://www.jenkins.io/"
+               } ],
+               "date_added": "13244233436523348",
+               "date_modified": "0",
+               "id": "41",
+               "name": "Version Control and Testing",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13244231102000000",
+                  "id": "48",
+                  "name": "Amazon Web Services (AWS) - Cloud Computing Services",
+                  "type": "url",
+                  "url": "https://aws.amazon.com/"
+               }, {
+                  "date_added": "13244231120000000",
+                  "id": "49",
+                  "name": "Cloud Computing Services  |  Google Cloud",
+                  "type": "url",
+                  "url": "https://cloud.google.com/"
+               }, {
+                  "date_added": "13244231126000000",
+                  "id": "50",
+                  "name": "Heroku - Google Search",
+                  "type": "url",
+                  "url": "https://www.google.com/search?channel=fs&client=ubuntu&q=Heroku"
+               }, {
+                  "date_added": "13244231169000000",
+                  "id": "51",
+                  "name": "DigitalOcean – The developer cloud",
+                  "type": "url",
+                  "url": "https://www.digitalocean.com/"
+               }, {
+                  "date_added": "13244231180000000",
+                  "id": "52",
+                  "name": "Netlify: All-in-one platform for automating modern web projects",
+                  "type": "url",
+                  "url": "https://www.netlify.com/"
+               } ],
+               "date_added": "13244233436523587",
+               "date_modified": "0",
+               "id": "47",
+               "name": "Web Services",
+               "type": "folder"
+            }, {
+               "date_added": "13244231271000000",
+               "id": "53",
+               "name": "Achieve mastery through challenge | Codewars",
+               "type": "url",
+               "url": "https://www.codewars.com/"
+            }, {
+               "date_added": "13244231645000000",
+               "id": "54",
+               "name": "Learn to code at home | freeCodeCamp.org",
+               "type": "url",
+               "url": "https://www.freecodecamp.org/"
+            }, {
+               "date_added": "13244231663000000",
+               "id": "55",
+               "name": "Learn to Code - for Free | Codecademy",
+               "type": "url",
+               "url": "https://www.codecademy.com/"
+            }, {
+               "date_added": "13244231974000000",
+               "id": "56",
+               "name": "The place to protect open source | huntr",
+               "type": "url",
+               "url": "https://www.huntr.dev/"
+            } ],
+            "date_added": "13244233436522822",
+            "date_modified": "0",
+            "id": "27",
+            "name": "Programming",
+            "type": "folder"
+         }, {
+            "date_added": "13244232555000000",
+            "id": "57",
+            "name": "Google",
+            "type": "url",
+            "url": "https://www.google.com/"
+         } ],
+         "date_added": "13244233422721364",
+         "date_modified": "13244233581976543",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13244232665000000",
+            "id": "59",
+            "name": "Yahoo",
+            "type": "url",
+            "url": "https://www.yahoo.com/"
+         }, {
+            "children": [ {
+               "date_added": "13244224098000000",
+               "id": "61",
+               "name": "BMW.com | The international BMW Website",
+               "type": "url",
+               "url": "https://www.bmw.com/en/index.html"
+            }, {
+               "date_added": "13244224111000000",
+               "id": "62",
+               "name": "Audi.com – the international Audi website | audi.com",
+               "type": "url",
+               "url": "https://www.audi.com/en.html"
+            }, {
+               "date_added": "13244224126000000",
+               "id": "63",
+               "name": "New Cars, Trucks, SUVs & Hybrids | Toyota Official Site",
+               "type": "url",
+               "url": "https://www.toyota.com/"
+            }, {
+               "date_added": "13244224146000000",
+               "id": "64",
+               "name": "Welcome | Kia Motors Europe",
+               "type": "url",
+               "url": "https://www.kia.com/eu/"
+            }, {
+               "date_added": "13244224163000000",
+               "id": "65",
+               "name": "Official Porsche Website - Dr. Ing. h.c. F. Porsche AG",
+               "type": "url",
+               "url": "https://www.porsche.com/"
+            } ],
+            "date_added": "13244233436524169",
+            "date_modified": "0",
+            "id": "60",
+            "name": "Cars",
+            "type": "folder"
+         }, {
+            "date_added": "13244232623000000",
+            "id": "66",
+            "name": "Find your inspiration. | Flickr",
+            "type": "url",
+            "url": "https://www.flickr.com/"
+         } ],
+         "date_added": "13244233422721373",
+         "date_modified": "13244233458509375",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13244233422721374",
+         "date_modified": "0",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

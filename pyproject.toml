@@ -5,8 +5,8 @@ description = "Parse db/html/json bookmarks file from (Chrome - Firefox - Custom
 authors = ["Adam Saleh <radam9@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/radam9/bookmarks_converter"
-repository = "https://github.com/radam9/bookmarks_converter"
+homepage = "https://github.com/radam9/bookmarks-converter"
+repository = "https://github.com/radam9/bookmarks-converter"
 keywords = [
     "bookmarks", 
     "bookmarks converter", 

@@ -1,8 +1,8 @@
-# Bookmarks_Converter
+# Bookmarks Converter
 
 ---
-[![image](https://img.shields.io/github/workflow/status/radam9/bookmarks_converter/build-deploy?style=flat-square)](https://github.com/radam9/bookmarks_converter)
-[![image](https://img.shields.io/github/license/radam9/bookmarks_converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
+[![image](https://img.shields.io/github/workflow/status/radam9/bookmarks-converter/build-deploy/main?style=flat-square)](https://github.com/radam9/bookmarks-converter)
+[![image](https://img.shields.io/github/license/radam9/bookmarks-converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
 [![image](https://img.shields.io/pypi/pyversions/bookmarks-converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
 
 
@@ -43,20 +43,20 @@ python -m pip install bookmarks-converter
 
 ---
 ### Test
-To test the package you will need to clone the [git repository](https://github.com/radam9/bookmarks_converter).
+To test the package you will need to clone the [git repository](https://github.com/radam9/bookmarks-converter).
 
 ```bash
 # Cloning with HTTPS
-git clone https://github.com/radam9/bookmarks_converter.git
+git clone https://github.com/radam9/bookmarks-converter.git
 
 # Cloning with SSH
-git clone git@github.com:radam9/bookmarks_converter.git
+git clone git@github.com:radam9/bookmarks-converter.git
 ```
 then you create and install the dependencies using [`Poetry`](https://python-poetry.org/).
 
 ```bash
 # navigate to repo's folder
-cd bookmarks_converter
+cd bookmarks-converter
 # install the dependencies
 poetry install
 # run the tests

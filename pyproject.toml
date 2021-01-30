@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "bookmarks-converter"
-version = "0.1.1"
+version = "0.1.2"
 description = "Parse db/html/json bookmarks file from (Chrome - Firefox - Custom source) and convert it to db/html/json format."
 authors = ["Adam Saleh <radam9@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/radam9/bookmarks_converter"
-repository = "https://github.com/radam9/bookmarks_converter"
+homepage = "https://github.com/radam9/bookmarks-converter"
+repository = "https://github.com/radam9/bookmarks-converter"
 keywords = [
     "bookmarks", 
     "bookmarks converter", 

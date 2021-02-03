@@ -1,7 +1,9 @@
 import argparse
+from json import JSONDecodeError
 from pathlib import Path
 
-import bookmarks_converter
+from bookmarks_converter import BookmarksConverter
+from sqlalchemy.exc import DatabaseError, DBAPIError, OperationalError
 
 
 def _get_version():
@@ -14,19 +16,22 @@ def _get_version():
     return importlib_metadata.version("bookmarks-converter")
 
 
-def _file(file_path):
+def _file(filepath):
     """Check that file exists at the given path."""
-    file_path = Path(file_path)
+    filepath = Path(filepath)
 
-    if not file_path.is_file():
+    if not filepath.is_file():
         raise argparse.ArgumentTypeError(
-            f"Could not find a file at the given file_path: '{file_path}'"
+            f"Could not find a file at the given filepath: '{filepath}'"
         )
-    return file_path
+    return filepath
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser()
+
+    parser = argparse.ArgumentParser(
+        description="Convert your browser bookmarks file from (db, html, json) to (db, html, json)."
+    )
 
     version = _get_version()
     parser.add_argument(
@@ -39,18 +44,38 @@ def main(argv=None):
     parser.add_argument(
         "input_format",
         choices=("db", "html", "json"),
-        help="Format of the input bookmarks file.",
+        metavar="input_format",
+        help="Format of the input bookmarks file. one of (%(choices)s).",
     )
     parser.add_argument(
         "output_format",
         choices=("db", "html", "json"),
-        help="Format of the output bookmarks file.",
+        metavar="output_format",
+        help="Format of the output bookmarks file. one of (%(choices)s).",
     )
     parser.add_argument(
-        "file_path", type=_file, help="Path to bookmarks file to convert."
+        "filepath", type=_file, help="Path to bookmarks file to convert."
     )
 
     args = parser.parse_args(argv)
-    print(vars(args))
+    filepath = args.filepath
+
+    try:
+        bookmarks = BookmarksConverter(filepath)
+        bookmarks.parse(args.input_format)
+        bookmarks.convert(args.output_format)
+        bookmarks.save()
+    except (DatabaseError, DBAPIError, OperationalError):
+        parser.error(
+            f"The provided file '{filepath}' is not a valid sqlite3 database file."
+        )
+    except (AttributeError, KeyError, TypeError, ValueError):
+        parser.error(f"The provided file '{filepath}' is not a valid bookmarks file.")
+    except Exception:
+        parser.error(f"RuntimeError: An unexpected error has occured.")
+    finally:
+        temp_file = bookmarks.temp_filepath
+        if temp_file.is_file():
+            temp_file.unlink()
 
     return 0

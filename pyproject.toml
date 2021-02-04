@@ -25,7 +25,6 @@ classifiers = [
     ]
 packages = [
     { include = "bookmarks_converter", from = "src" },
-    { include = "cli", from = "src" },
     ]
 
 [tool.poetry.dependencies]
@@ -42,7 +41,7 @@ pytest-cov = "^2.11.1"
 pytest-mock = "^3.5.1"
 
 [tool.poetry.scripts]
-bookmarks-converter = "cli:main"
+bookmarks-converter = "bookmarks_converter.cli:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -2,8 +2,9 @@ import argparse
 from json import JSONDecodeError
 from pathlib import Path
 
-from bookmarks_converter import BookmarksConverter
 from sqlalchemy.exc import DatabaseError, DBAPIError, OperationalError
+
+from .core import BookmarksConverter
 
 
 def _get_version():

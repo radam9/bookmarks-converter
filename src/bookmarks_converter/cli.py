@@ -1,8 +1,9 @@
 import argparse
+import sys
 from json import JSONDecodeError
 from pathlib import Path
 
-from sqlalchemy.exc import DatabaseError, DBAPIError, OperationalError
+from sqlalchemy.exc import DatabaseError, OperationalError
 
 from .core import BookmarksConverter
 
@@ -28,10 +29,10 @@ def _file(filepath):
     return filepath
 
 
-def main(argv=None):
-
+def _parse_args(argv):
     parser = argparse.ArgumentParser(
-        description="Convert your browser bookmarks file from (db, html, json) to (db, html, json)."
+        prog="bookmarks-converter",
+        description="Convert your browser bookmarks file from (db, html, json) to (db, html, json).",
     )
 
     version = _get_version()
@@ -57,8 +58,14 @@ def main(argv=None):
     parser.add_argument(
         "filepath", type=_file, help="Path to bookmarks file to convert."
     )
-
     args = parser.parse_args(argv)
+    return parser, args
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+
+    parser, args = _parse_args(argv)
     filepath = args.filepath
 
     try:
@@ -66,11 +73,11 @@ def main(argv=None):
         bookmarks.parse(args.input_format)
         bookmarks.convert(args.output_format)
         bookmarks.save()
-    except (DatabaseError, DBAPIError, OperationalError):
+    except (DatabaseError, OperationalError):
         parser.error(
             f"The provided file '{filepath}' is not a valid sqlite3 database file."
         )
-    except (AttributeError, KeyError, TypeError, ValueError):
+    except (AttributeError, JSONDecodeError, KeyError, TypeError, ValueError):
         parser.error(f"The provided file '{filepath}' is not a valid bookmarks file.")
     except Exception:
         parser.error(f"RuntimeError: An unexpected error has occured.")
@@ -78,5 +85,12 @@ def main(argv=None):
         temp_file = bookmarks.temp_filepath
         if temp_file.is_file():
             temp_file.unlink()
+
+    sys.stdout.buffer.write(
+        bytes(
+            f"Conversion successful!\nThe converted file can be found at '{bookmarks.output_filepath}'\n",
+            "utf-8",
+        )
+    )
 
     return 0

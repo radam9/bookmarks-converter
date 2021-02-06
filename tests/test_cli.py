@@ -3,7 +3,7 @@ from argparse import ArgumentTypeError
 from pathlib import Path
 
 import pytest
-from bookmarks_converter.cli import _file, _parse_args, main
+from bookmarks_converter.cli import _file, _get_version, _parse_args, main
 
 
 def test_file_error():
@@ -35,7 +35,7 @@ errors = {
     + "bookmarks-converter: error: the following arguments are required: filepath\n",
     "filepath_notfound": usage
     + "bookmarks-converter: error: argument filepath: Could not find a file at the given filepath: 'a'\n",
-    "version": "bookmarks-converter 0.1.3\n",
+    "version": f"bookmarks-converter {_get_version()}\n",
     "help": usage
     + "\nConvert your browser bookmarks file from (db, html, json) to (db, html, json).\n\npositional arguments:\n  input_format   Format of the input bookmarks file. one of (db, html, json).\n  output_format  Format of the output bookmarks file. one of (db, html, json).\n  filepath       Path to bookmarks file to convert.\n\noptional arguments:\n  -h, --help     show this help message and exit\n  -V, --version  show program's version number and exit\n",
 }

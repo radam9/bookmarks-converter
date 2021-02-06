@@ -111,7 +111,7 @@ def test_main_error(capsys, args, err_msg):
 
 def test_main(capsys, result_bookmark_files):
     filepath = Path(result_bookmark_files["from_chrome_html.db"])
-    output_filepath = filepath.with_name("output_" + filepath.name)
+    output_filepath = filepath.with_name(f"output_{filepath.stem}_001{filepath.suffix}")
     exit_code = main(["db", "db", str(filepath)])
     out, err = capsys.readouterr()
     assert exit_code == 0

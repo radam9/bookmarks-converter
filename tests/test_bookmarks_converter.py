@@ -118,7 +118,9 @@ class Test_JSONMixin:
 class Test_BookmarksConverter:
     def test_init(self):
         file_path = Path("/home/user/Downloads/source/bookmarks.html")
-        output_file = file_path.with_name(f"output_{file_path.name}")
+        output_file = file_path.with_name(
+            f"output_{file_path.stem}_001{file_path.suffix}"
+        )
         temp_file = file_path.with_name(f"temp_{file_path.name}")
         instance = BookmarksConverter(str(file_path))
         assert instance.bookmarks is None
@@ -135,10 +137,19 @@ class Test_BookmarksConverter:
     def test_prepare_filepaths(self):
         filename = "/home/user/Downloads/source/bookmarks.html"
         temp_filepath = Path("/home/user/Downloads/source/temp_bookmarks.html")
-        output_filepath = Path("/home/user/Downloads/source/output_bookmarks.html")
+        output_filepath = Path("/home/user/Downloads/source/output_bookmarks_001.html")
         bookmarks = BookmarksConverter(filename)
         assert temp_filepath == bookmarks.temp_filepath
         assert output_filepath == bookmarks.output_filepath
+
+    def test_rename_outputfile(self):
+        file_ = Path("/source/bookmarks.html")
+        instance = BookmarksConverter(file_)
+        for i in range(2, 11):
+            instance._rename_outputfile()
+            assert instance.output_filepath == file_.with_name(
+                f"output_{file_.stem}_{i:03d}{file_.suffix}"
+            )
 
     @pytest.mark.parametrize(
         "_format, method",

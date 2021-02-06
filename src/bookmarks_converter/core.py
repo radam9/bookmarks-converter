@@ -11,8 +11,6 @@ Firefox. The output HTML files adhere to the firefox format.
 The JSON files supported are the Chrome bookmarks file, the Firefox
 .json bookmarks export file, and the custom json file created by this package"""
 
-# Use of this source code is governed by the MIT license.
-__license__ = "MIT"
 
 import json
 import re
@@ -31,7 +29,7 @@ class DBMixin:
 
     def _parse_db(self):
         """Import the DB bookmarks file into self._tree as an object."""
-        database_path = "sqlite:///" + str(self.filepath)
+        database_path = f"sqlite:///{str(self.filepath)}"
         engine = create_engine(database_path, encoding="utf-8")
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -67,7 +65,7 @@ class DBMixin:
 
     def _save_to_db(self):
         """Function to export the bookmarks as SQLite3 DB."""
-        database_path = "sqlite:///" + str(self.output_filepath.with_suffix(".db"))
+        database_path = f"sqlite:///{str(self.output_filepath.with_suffix('.db'))}"
         engine = create_engine(database_path, encoding="utf-8")
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -359,12 +357,33 @@ class BookmarksConverter(DBMixin, HTMLMixin, JSONMixin):
 
     def _prepare_filepaths(self):
         """Takes in filepath, and creates the following filepaths:
+
         -temp_filepath: filepath used for temporary file created by
          format_html_file() and format_json_file() methods.
+
         -output_filepath: output filepath used by the save_to_**(DB/HTML/JSON)
-         methods to save the converted data into a file."""
-        self.output_filepath = self.filepath.with_name("output_" + self.filepath.name)
-        self.temp_filepath = self.filepath.with_name("temp_" + self.filepath.name)
+         methods to save the converted data into a file.
+
+        If the output_file already exists, increment the number at the end of
+        the output filename."""
+        self.output_filepath = self.filepath.with_name(
+            f"output_{self.filepath.stem}_001{self.filepath.suffix}"
+        )
+        while self.output_filepath.is_file():
+            self._rename_outputfile()
+
+        self.temp_filepath = self.filepath.with_name(f"temp_{self.filepath.name}")
+
+    def _rename_outputfile(self):
+        """Increments the number at the end of the output filename,
+        i.e: `output_bookmarks_001.html`"""
+        filename = self.output_filepath.stem.split("_")
+        if filename[-1].isdigit():
+            num = int(filename[-1]) + 1
+            filename[-1] = f"{num:03d}"
+            self.output_filepath = self.output_filepath.with_name(
+                f"{'_'.join(filename)}{self.output_filepath.suffix}"
+            )
 
     def _add_index(self):
         """Add index to each element if tree source is HTML or JSON(Chrome)"""

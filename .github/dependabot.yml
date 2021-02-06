@@ -9,6 +9,6 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    target-branch: "dev"
+    target-branch: "dep"
     allow:
       - dependency-type: "all"

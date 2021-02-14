@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bookmarks-converter"
-version = "0.2.0"
+version = "0.2.1"
 description = "Parse db/html/json bookmarks file from (Chrome - Firefox - Custom source) and convert it to db/html/json format."
 authors = ["Adam Saleh <radam9@gmail.com>"]
 license = "MIT"

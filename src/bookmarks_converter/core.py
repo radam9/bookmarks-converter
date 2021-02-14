@@ -403,10 +403,12 @@ class BookmarksConverter(DBMixin, HTMLMixin, JSONMixin):
         getattr(self, method)()
 
     def parse(self, format_):
+        format_.lower()
         self._format = format_
         self._dispatcher(f"_parse_{format_}")
 
     def convert(self, format_):
+        format_ = format_.lower()
         self._format = format_
         self._export = format_
         self._dispatcher(f"_convert_to_{format_}")

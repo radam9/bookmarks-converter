@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bookmarks-converter"
-version = "0.2.3"
+version = "0.2.4"
 description = "Parse db/html/json bookmarks file from (Chrome - Firefox - Custom source) and convert it to db/html/json format."
 authors = ["Adam Saleh <radam9@gmail.com>"]
 license = "MIT"
@@ -31,7 +31,7 @@ packages = [
 python = "^3.6"
 beautifulsoup4 = "^4.9.3"
 SQLAlchemy = "^1.3.19"
-importlib-metadata = {version = ">=1,<4", python = "<3.8"}
+importlib-metadata = {version = ">=1,<5", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"

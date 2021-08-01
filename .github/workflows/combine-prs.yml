@@ -1,25 +1,25 @@
-name: "Combine PRs"
+name: 'Combine PRs'
 
 # Controls when the action will run - in this case triggered manually
 on:
   workflow_dispatch:
     inputs:
       branchPrefix:
-        description: "Branch prefix to find combinable PRs based on"
+        description: 'Branch prefix to find combinable PRs based on'
         required: true
-        default: "dependabot"
+        default: 'dependabot'
       mustBeGreen:
-        description: "Only combine PRs that are green (status is success)"
+        description: 'Only combine PRs that are green (status is success)'
         required: true
         default: true
       combineBranchName:
-        description: "Name of the branch to combine PRs into"
+        description: 'Name of the branch to combine PRs into'
         required: true
-        default: "combine-prs-branch"
+        default: 'combine-prs-branch'
       ignoreLabel:
-        description: "Exclude PRs with this label"
+        description: 'Exclude PRs with this label'
         required: true
-        default: "nocombine"
+        default: 'nocombine'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,7 +30,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/github-script@v4.0.2
+      - uses: actions/github-script@v3
         id: fetch-branch-names
         name: Fetch branch names
         with:
@@ -83,15 +83,13 @@ jobs:
                 }
               }
             }
-
             if (branches.length == 0) {
               core.setFailed('No PRs/branches matched criteria');
               return;
             }
-
             core.setOutput('base-branch', base_branch);
             core.setOutput('prs-string', prs.join('\n'));
-
+            
             combined = branches.join(' ')
             console.log('Combined: ' + combined);
             return combined
@@ -106,28 +104,30 @@ jobs:
           BRANCHES_TO_COMBINE: ${{ steps.fetch-branch-names.outputs.result }}
           COMBINE_BRANCH_NAME: ${{ github.event.inputs.combineBranchName }}
         run: |
-          echo "${{steps.fetch-branch-names.outputs.result}}"
+          echo "$BRANCHES_TO_COMBINE"
           sourcebranches="${BRANCHES_TO_COMBINE%\"}"
           sourcebranches="${sourcebranches#\"}"
-
+          
           basebranch="${BASE_BRANCH%\"}"
           basebranch="${basebranch#\"}"
-
+          
           git config pull.rebase false
           git config user.name github-actions
           git config user.email github-actions@github.com
-
+          
           git branch $COMBINE_BRANCH_NAME $basebranch
           git checkout $COMBINE_BRANCH_NAME
           git pull origin $sourcebranches --no-edit
           git push origin $COMBINE_BRANCH_NAME
       # Creates a PR with the new combined branch
-      - uses: actions/github-script@v4.0.2
+      - uses: actions/github-script@v3
         name: Create Combined Pull Request
+        env:
+          PRS_STRING: ${{ steps.fetch-branch-names.outputs.prs-string }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const prString = `${{ steps.fetch-branch-names.outputs.prs-string }}`;
+            const prString = process.env.PRS_STRING;
             const body = 'This PR was created by the Combine PRs action by combining the following PRs:\n' + prString;
             await github.pulls.create({
               owner: context.repo.owner,

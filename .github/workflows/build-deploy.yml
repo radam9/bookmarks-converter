@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
         os: [macos-latest, windows-latest, ubuntu-latest]
 
     defaults:
@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
 

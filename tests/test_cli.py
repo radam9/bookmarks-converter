@@ -1,9 +1,19 @@
 import itertools
+import sys
 from argparse import ArgumentTypeError
 from pathlib import Path
 
 import pytest
 from bookmarks_converter.cli import _file, _get_version, _parse_args, main
+
+# In Python 3.10:
+# Misleading phrase “optional arguments” was replaced with “options” in argparse help.
+# Some tests might require adaptation if they rely on exact output match.
+# https://docs.python.org/3/whatsnew/3.10.html#argparse
+if sys.version_info.minor >= 10:
+    optional_arguments = "options"
+else:
+    optional_arguments = "optional arguments"
 
 
 def test_file_error():
@@ -37,7 +47,7 @@ errors = {
     + "bookmarks-converter: error: argument filepath: Could not find a file at the given filepath: 'a'\n",
     "version": f"bookmarks-converter {_get_version()}\n",
     "help": usage
-    + "\nConvert your browser bookmarks file from (db, html, json) to (db, html, json).\n\npositional arguments:\n  input_format   Format of the input bookmarks file. one of (db, html, json).\n  output_format  Format of the output bookmarks file. one of (db, html, json).\n  filepath       Path to bookmarks file to convert.\n\noptional arguments:\n  -h, --help     show this help message and exit\n  -V, --version  show program's version number and exit\n",
+    + f"\nConvert your browser bookmarks file from (db, html, json) to (db, html, json).\n\npositional arguments:\n  input_format   Format of the input bookmarks file. one of (db, html, json).\n  output_format  Format of the output bookmarks file. one of (db, html, json).\n  filepath       Path to bookmarks file to convert.\n\n{optional_arguments}:\n  -h, --help     show this help message and exit\n  -V, --version  show program's version number and exit\n",
 }
 
 choices = ["db", "html", "json"]

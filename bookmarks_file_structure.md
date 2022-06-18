@@ -143,7 +143,7 @@ The `.json` file has a root folder, which has the following folders as children:
   "lastModified": 1599750431776000,
   "id": 2,
   "typeCode": 1,
-  "iconuri": None,
+  "iconuri": null,
   "type": "text/x-moz-place",
   "uri": "https://www.google.com"
 }
@@ -228,8 +228,8 @@ If you export your bookmarks as a .json file using this BookmarksConverter packa
   "url": "https://www.google.com",
   "title": "Google",
   "date_added": 0,
-  "icon": None,
-  "iconuri": None,
-  "tags": None
+  "icon": null,
+  "iconuri": null,
+  "tags": null
 }
 ```

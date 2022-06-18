@@ -12,6 +12,9 @@
             "children": [ {
                "date_added": "13244224395000000",
                "id": "7",
+               "meta_info": {
+                    "last_visited_desktop": "13204918293394216"
+                  },
                "name": "Twitter. It’s what’s happening / Twitter",
                "type": "url",
                "url": "https://twitter.com/?lang=en"
@@ -91,6 +94,9 @@
             }, {
                "date_added": "13244224031000000",
                "id": "21",
+               "meta_info": {
+                    "last_visited_desktop": "13204918293394216"
+                  },
                "name": "About Us",
                "type": "url",
                "url": "https://www.mozilla.org/en-US/about/"

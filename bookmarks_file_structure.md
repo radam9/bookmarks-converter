@@ -143,7 +143,7 @@ The `.json` file has a root folder, which has the following folders as children:
   "lastModified": 1599750431776000,
   "id": 2,
   "typeCode": 1,
-  "iconuri": None,
+  "iconuri": null,
   "type": "text/x-moz-place",
   "uri": "https://www.google.com"
 }
@@ -176,6 +176,9 @@ Unix Epoch = Chrome Epoch - 11644473600000000
   "date_added": "13244233436520764",
   "date_modified": "0",
   "id": "1",
+  "meta_info": {
+    "last_visited_desktop": "13204332604026373"
+  },
   "name": "Main Folder",
   "type": "folder"
 }
@@ -187,6 +190,9 @@ Unix Epoch = Chrome Epoch - 11644473600000000
 {
   "date_added": "13244224395000000",
   "id": "2",
+  "meta_info": {
+    "last_visited_desktop": "13204918293394216"
+  },
   "name": "Google",
   "type": "url",
   "url": "https://www.google.com"
@@ -222,8 +228,8 @@ If you export your bookmarks as a .json file using this BookmarksConverter packa
   "url": "https://www.google.com",
   "title": "Google",
   "date_added": 0,
-  "icon": None,
-  "iconuri": None,
-  "tags": None
+  "icon": null,
+  "iconuri": null,
+  "tags": null
 }
 ```

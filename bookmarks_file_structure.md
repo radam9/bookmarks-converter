@@ -176,6 +176,9 @@ Unix Epoch = Chrome Epoch - 11644473600000000
   "date_added": "13244233436520764",
   "date_modified": "0",
   "id": "1",
+  "meta_info": {
+    "last_visited_desktop": "13204332604026373"
+  },
   "name": "Main Folder",
   "type": "folder"
 }
@@ -187,6 +190,9 @@ Unix Epoch = Chrome Epoch - 11644473600000000
 {
   "date_added": "13244224395000000",
   "id": "2",
+  "meta_info": {
+    "last_visited_desktop": "13204918293394216"
+  },
   "name": "Google",
   "type": "url",
   "url": "https://www.google.com"

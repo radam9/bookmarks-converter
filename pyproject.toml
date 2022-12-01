@@ -31,7 +31,7 @@ packages = [
 python = "^3.7"
 beautifulsoup4 = "^4.10.0"
 SQLAlchemy = "^1.4.31"
-importlib-metadata = {version = ">=1,<5", python = "<3.8"}
+importlib-metadata = {version = ">=1,<6", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.12.0"

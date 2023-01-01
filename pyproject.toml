@@ -30,14 +30,14 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.7"
 beautifulsoup4 = "^4.10.0"
-SQLAlchemy = "^1.4.31"
-importlib-metadata = {version = ">=1,<5", python = "<3.8"}
+SQLAlchemy = "^2.0.0"
+importlib-metadata = {version = ">=1,<7", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.12.0"
 pytest = "^7.2.0"
-black = "^22.1.0"
-pytest-cov = "^4.0.0"
+black = "^23.1.0"
+pytest-cov = "^4.1.0"
 pytest-mock = "^3.8.2"
 
 [tool.poetry.scripts]

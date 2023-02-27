@@ -289,7 +289,7 @@ class JSONBookmark(NodeMixin):
         # Chrome has added a new field in their json file `meta_info`.
         # This field is a dictionary with key/value pairs.
         # ignore this field for the time being as it only contains `last_visited_desktop` key.
-        if "last_visited_desktop" in kwargs:
+        if any(k in kwargs for k in ["last_visited_desktop", "power_bookmark_meta"]):
             return
 
         # check the version of the passed json file depending on unique elements

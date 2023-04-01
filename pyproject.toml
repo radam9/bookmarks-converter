@@ -30,7 +30,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.7"
 beautifulsoup4 = "^4.10.0"
-SQLAlchemy = "^1.4.31"
+SQLAlchemy = ">=1.4.31,<3.0.0"
 importlib-metadata = {version = ">=1,<5", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]

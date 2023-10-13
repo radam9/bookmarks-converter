@@ -31,8 +31,8 @@ To see example of the structure or layout of the `DataBase`, `HTML` or `JSON` ve
 ### Python and OS Support
 The package has been tested on Github Actions with the following OSs and Python versions:
 
-| OS \ Python      | `3.10`  |  `3.9`  |  `3.8`  |  `3.7`  |
-| :--------------- |:-------:| :-----: | :-----: | :-----: |
+| OS \ Python      | `3.12`  | `3.11`  | `3.10`  |  `3.9`  |
+| :--------------- |:-------:|:-------:|:-------:|:-------:|
 | `macos-latest`   | &check; | &check; | &check; | &check; |
 | `ubuntu-latest`  | &check; | &check; | &check; | &check; |
 | `windows-latest` | &check; | &check; | &check; | &check; |

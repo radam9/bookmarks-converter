@@ -30,10 +30,10 @@ class DBMixin:
     def _parse_db(self):
         """Import the DB bookmarks file into self._tree as an object."""
         database_path = f"sqlite:///{str(self.filepath)}"
-        engine = create_engine(database_path, encoding="utf-8")
+        engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
         session = Session()
-        self._tree = session.query(Bookmark).get(1)
+        self._tree = session.get(Bookmark, 1)
 
     def _convert_to_db(self):
         """Convert the imported bookmarks to database objects."""
@@ -66,13 +66,15 @@ class DBMixin:
     def _save_to_db(self):
         """Function to export the bookmarks as SQLite3 DB."""
         database_path = f"sqlite:///{str(self.output_filepath.with_suffix('.db'))}"
-        engine = create_engine(database_path, encoding="utf-8")
+        engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
         session = Session()
         Base.metadata.create_all(engine)
         session.commit()
         session.bulk_save_objects(self.bookmarks)
         session.commit()
+        session.close()
+        engine.dispose()
 
 
 class HTMLMixin:

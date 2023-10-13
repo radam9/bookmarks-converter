@@ -24,7 +24,7 @@ def result_bookmark_files():
 def get_data_from_db():
     def _function(db_path, source):
         database_path = "sqlite:///" + str(db_path)
-        engine = create_engine(database_path, encoding="utf-8")
+        engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
         session = Session()
         bookmarks = session.query(Bookmark).order_by(Bookmark.id).all()
@@ -47,6 +47,7 @@ def get_data_from_db():
         else:
             root_date = folder_date = None
         session.close()
+        engine.dispose()
         return bookmarks, root_date, folder_date
 
     return _function

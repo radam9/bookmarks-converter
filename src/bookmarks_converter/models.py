@@ -90,7 +90,7 @@ class NodeMixin:
         return url
 
     def _check_instance_type(self, type_):
-        """"Check that the type of the instance matches the type of executed method"""
+        """ "Check that the type of the instance matches the type of executed method"""
         if self.type != type_:
             raise TypeError(f"The item you are converting is not a {type_}")
 
@@ -287,9 +287,9 @@ class JSONBookmark(NodeMixin):
 
     def __init__(self, **kwargs):
         # Chrome has added a new field in their json file `meta_info`.
-        # This field is a dictionary with key/value pairs.
-        # ignore this field for the time being as it only contains `last_visited_desktop` key.
-        if "last_visited_desktop" in kwargs:
+        # This field is a dictionary with key/value pairs, and doesn't have an `id` field.
+        # ignore this field for the time being as it contains meta information.
+        if "id" not in kwargs:
             return
 
         # check the version of the passed json file depending on unique elements

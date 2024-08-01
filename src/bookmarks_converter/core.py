@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup, Tag
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from .models import Base, Bookmark, HTMLBookmark, JSONBookmark
+from .models import Base, DBBookmark, HTMLBookmark, JSONBookmark
 
 
 class DBMixin:
@@ -33,7 +33,7 @@ class DBMixin:
         engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
         session = Session()
-        self._tree = session.get(Bookmark, 1)
+        self._tree = session.get(DBBookmark, 1)
 
     def _convert_to_db(self):
         """Convert the imported bookmarks to database objects."""
@@ -113,9 +113,10 @@ class HTMLMixin:
             absolute path to bookmarks html file.
         output_filepath: str
             absolute path and name for output file."""
-        with open(filepath, "r", encoding="utf-8") as input_file, open(
-            output_filepath, "w", encoding="utf-8"
-        ) as output_file:
+        with (
+            open(filepath, "r", encoding="utf-8") as input_file,
+            open(output_filepath, "w", encoding="utf-8") as output_file,
+        ):
             # regex to select an entire H1/H3/A HTML element
             element = re.compile(r"(<(H1|H3|A))(.*?(?=>))>(.*)(<\/\2>)\n")
 

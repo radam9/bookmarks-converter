@@ -1,9 +1,9 @@
 import pytest
-from bookmarks_converter.models import Folder, NodeMixin, Url
+from bookmarks_converter.models import DBFolder, NodeMixin, DBUrl
 
 
 def test_convert_url_to_db(url_custom, create_class_instance):
-    instance = Url(
+    instance = DBUrl(
         title="Google",
         index=0,
         parent_id=1,
@@ -22,7 +22,7 @@ def test_convert_url_to_db(url_custom, create_class_instance):
 
 
 def test_convert_folder_to_db(folder_custom, create_class_instance):
-    instance = Folder(title="Main Folder", index=0, parent_id=0, _id=1, date_added=0)
+    instance = DBFolder(title="Main Folder", index=0, parent_id=0, _id=1, date_added=0)
     for key, value in folder_custom.items():
         assert value == getattr(instance, key)
 

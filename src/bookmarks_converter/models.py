@@ -20,7 +20,7 @@ class NodeMixin:
     def _convert_folder_to_db(self):
         """Convert a (html or json) folder object to a database folder object."""
         self._check_instance_type("folder")
-        folder = Folder(
+        folder = DBFolder(
             _id=self.id,
             index=self.index,
             parent_id=self.parent_id,
@@ -32,7 +32,7 @@ class NodeMixin:
     def _convert_url_to_db(self):
         """Convert a url (html or json) object to a database url object."""
         self._check_instance_type("url")
-        url = Url(
+        url = DBUrl(
             _id=self.id,
             index=self.index,
             parent_id=self.parent_id,
@@ -103,7 +103,7 @@ class NodeMixin:
         return f"{self.title} - {self.type} - id: {self.id}"
 
 
-class Bookmark(Base, NodeMixin):
+class DBBookmark(Base, NodeMixin):
     """Base model for the Url and Folder model.
     (used for Single Table Inheritance)
     ...
@@ -133,11 +133,11 @@ class Bookmark(Base, NodeMixin):
     date_added = Column(Integer, nullable=False, default=round(time.time() * 1000))
     type = Column(String)
     parent = relationship(
-        "Bookmark",
+        "DBBookmark",
         cascade="save-update, merge",
-        backref=backref("children", cascade="all", order_by="Bookmark.index"),
+        backref=backref("children", cascade="all", order_by="DBBookmark.index"),
         lazy=False,
-        remote_side="Bookmark.id",
+        remote_side="DBBookmark.id",
     )
 
     __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "bookmark"}
@@ -169,7 +169,7 @@ class Bookmark(Base, NodeMixin):
         return vars_self == vars_other
 
 
-class Folder(Bookmark):
+class DBFolder(DBBookmark):
     """Model representing bookmark folders
     ...
     Attributes
@@ -198,7 +198,7 @@ class Folder(Bookmark):
         self.date_added = date_added
 
 
-class Url(Bookmark):
+class DBUrl(DBBookmark):
     """Model representing the URLs
     ...
     Attributes

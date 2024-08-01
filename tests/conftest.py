@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 import pytest
-from bookmarks_converter.models import Bookmark, create_engine, sessionmaker
+from bookmarks_converter.models import DBBookmark, create_engine, sessionmaker
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR.joinpath("data")
@@ -27,22 +27,16 @@ def get_data_from_db():
         engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
         session = Session()
-        bookmarks = session.query(Bookmark).order_by(Bookmark.id).all()
+        bookmarks = session.query(DBBookmark).order_by(DBBookmark.id).all()
         if source != None:
-            root_date = session.query(Bookmark).filter_by(title="root").one().date_added
+            root_date = session.query(DBBookmark).filter_by(title="root").one().date_added
         if source == "Chrome":
             folder_date = (
-                session.query(Bookmark)
-                .filter_by(title="Other Bookmarks")
-                .one()
-                .date_added
+                session.query(DBBookmark).filter_by(title="Other Bookmarks").one().date_added
             )
         elif source == "Firefox":
             folder_date = (
-                session.query(Bookmark)
-                .filter_by(title="Bookmarks Menu")
-                .one()
-                .date_added
+                session.query(DBBookmark).filter_by(title="Bookmarks Menu").one().date_added
             )
         else:
             root_date = folder_date = None

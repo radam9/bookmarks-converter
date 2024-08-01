@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from bookmarks_converter import BookmarksConverter
 from bookmarks_converter.core import JSONMixin
-from bookmarks_converter.models import Folder, JSONBookmark
+from bookmarks_converter.models import DBFolder, JSONBookmark
 from pytest_mock import class_mocker as mocker
 
 
@@ -32,7 +32,7 @@ class Test_DBMixin:
         for i in range(1, 11):
             parent_id = None if i == 0 else 0
             bookmarks.append(
-                Folder(date_added=0, index=0, _id=i, parent_id=parent_id, title="Title")
+                DBFolder(date_added=0, index=0, _id=i, parent_id=parent_id, title="Title")
             )
         instance = BookmarksConverter(file_path)
         instance.bookmarks = bookmarks
@@ -118,9 +118,7 @@ class Test_JSONMixin:
 class Test_BookmarksConverter:
     def test_init(self):
         file_path = Path("/home/user/Downloads/source/bookmarks.html")
-        output_file = file_path.with_name(
-            f"output_{file_path.stem}_001{file_path.suffix}"
-        )
+        output_file = file_path.with_name(f"output_{file_path.stem}_001{file_path.suffix}")
         temp_file = file_path.with_name(f"temp_{file_path.name}")
         instance = BookmarksConverter(str(file_path))
         assert instance.bookmarks is None

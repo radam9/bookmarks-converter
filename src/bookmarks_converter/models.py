@@ -1,5 +1,6 @@
 import itertools
 import time
+from dataclasses import field, dataclass
 
 from bs4 import Tag
 from sqlalchemy import Column, ForeignKey, Integer, String, create_engine
@@ -10,6 +11,32 @@ engine = create_engine("sqlite:///:memory:")
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
+
+
+@dataclass
+class Bookmark:
+    id: int
+    guid: str
+    index: int
+    title: str
+    date_added: int
+    date_modified: int
+
+
+@dataclass
+class Folder(Bookmark):
+    children: list[Bookmark] = field(default_factory=list)
+
+
+@dataclass
+class Url(Bookmark):
+    url: str
+    icon: str = ""
+    icon_uri: str = ""
+    tags: list[str] = field(default_factory=list)
+
+    def icon_uri_is_set(self) -> bool:
+        return self.icon_uri != ""
 
 
 class NodeMixin:

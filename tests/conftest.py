@@ -2,22 +2,16 @@ import json
 from pathlib import Path
 
 import pytest
-from bookmarks_converter.models import DBBookmark, create_engine, sessionmaker
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT_DIR.joinpath("data")
+from bookmarks_converter.models import DBBookmark, Folder, Url, create_engine, sessionmaker
 
+TEST_ROOT_DIR = Path(__file__).resolve().parent
+DATA_DIR = TEST_ROOT_DIR.joinpath("resources")
 
-@pytest.fixture
-def source_bookmark_files():
-    files = {str(x.name): str(x) for x in DATA_DIR.glob("bookmarks_*")}
-    return files
-
-
-@pytest.fixture
-def result_bookmark_files():
-    files = {str(x.name): str(x) for x in DATA_DIR.glob("from_*")}
-    return files
+TEST_FILE_FIREFOX_JSON = DATA_DIR.joinpath("bookmarks_firefox.json")
+TEST_FILE_FIREFOX_HTML = DATA_DIR.joinpath("bookmarks_firefox.html")
+TEST_FILE_FIREFOX_HTML_UNINDENTED = DATA_DIR.joinpath("bookmarks_firefox_unindented.html")
+TEST_FILE_FIREFOX_HTML_FORMATTED = DATA_DIR.joinpath("bookmarks_firefox_formatted.html")
 
 
 @pytest.fixture
@@ -43,19 +37,6 @@ def get_data_from_db():
         session.close()
         engine.dispose()
         return bookmarks, root_date, folder_date
-
-    return _function
-
-
-@pytest.fixture
-def create_class_instance():
-    def _function(data, class_):
-        instance = class_()
-        for key, value in data.items():
-            if key == "iconuri":
-                key = "icon_uri"
-            setattr(instance, key, value)
-        return instance
 
     return _function
 
@@ -94,37 +75,6 @@ def folder_chrome():
 
 
 @pytest.fixture
-def url_firefox():
-    return {
-        "guid": "7TpRGhofxKDv",
-        "title": "Google",
-        "index": 0,
-        "dateAdded": 1599750431776000,
-        "lastModified": 1599750431776000,
-        "id": 2,
-        "typeCode": 1,
-        "iconuri": "https://www.google.com/favicon.ico",
-        "type": "text/x-moz-place",
-        "uri": "https://www.google.com",
-    }
-
-
-@pytest.fixture
-def folder_firefox():
-    return {
-        "guid": "K3LUb7o0kSUt",
-        "title": "Main Folder",
-        "index": 0,
-        "dateAdded": 1599750431776000,
-        "lastModified": 1599750431776000,
-        "id": 1,
-        "typeCode": 2,
-        "type": "text/x-moz-place-container",
-        "children": [],
-    }
-
-
-@pytest.fixture
 def url_custom():
     return {
         "type": "url",
@@ -149,3 +99,23 @@ def folder_custom():
         "date_added": 0,
         "children": [],
     }
+
+
+@pytest.fixture(scope="function")
+def modify_folder_and_url_methods():
+    """
+    Because the guids for HTML parsed bookmarks are generated on the spot, the equality check will
+    always fail. To overcome this we temporarily modify the equality method `__eq__` to ignore the
+    guids.
+    """
+
+    def equality_ignore_guid(self, other) -> bool:
+        for key in vars(self).keys():
+            if key == "guid" or key.startswith("_"):
+                continue
+            if getattr(self, key) != getattr(other, key):
+                return False
+        return True
+
+    Folder.__eq__ = equality_ignore_guid
+    Url.__eq__ = equality_ignore_guid

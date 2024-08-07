@@ -1,0 +1,540 @@
+{
+   "checksum": "dc9f1335bca5e4fb7741c849ff588ae7",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13244224031000000",
+            "date_last_used": "0",
+            "guid": "5790a342-a467-4e72-bfa5-0784e1b88755",
+            "id": "5",
+            "name": "Getting Started",
+            "type": "url",
+            "url": "https://www.mozilla.org/en-US/firefox/central/"
+         }, {
+            "date_added": "13244232634000000",
+            "date_last_used": "0",
+            "guid": "26fa0227-53cd-4420-8d14-71640e4abbb1",
+            "id": "15",
+            "name": "Outlook – free personal email and calendar from Microsoft",
+            "type": "url",
+            "url": "https://outlook.live.com/owa/"
+         }, {
+            "children": [ {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "cb74c62c-e8a5-4fa1-aca7-7da22c5f7db0",
+               "id": "17",
+               "name": "Help and Tutorials",
+               "type": "url",
+               "url": "https://support.mozilla.org/en-US/products/firefox"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "f2868e80-6135-4ca0-8185-d9a9779fbc51",
+               "id": "18",
+               "name": "Customize Firefox",
+               "type": "url",
+               "url": "https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "0abfac5b-f818-493e-921f-2d1b1d9dab74",
+               "id": "19",
+               "name": "Get Involved",
+               "type": "url",
+               "url": "https://www.mozilla.org/en-US/contribute/"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "20344d1e-e7f8-495a-b464-c169b34ed23e",
+               "id": "20",
+               "meta_info": {
+                    "last_visited_desktop": "13204918293394216"
+                  },
+               "name": "About Us",
+               "type": "url",
+               "url": "https://www.mozilla.org/en-US/about/"
+            } ],
+            "date_added": "13323109671091028",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "c4437552-d0f4-4f55-96d9-dd2f3bb3749a",
+            "id": "16",
+            "name": "Mozilla Firefox",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "98c3f6bb-86a2-4974-8f92-39ce8a0ceb57",
+               "id": "22",
+               "name": "Ubuntu",
+               "type": "url",
+               "url": "http://www.ubuntu.com/"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "49abd2b9-65f1-442e-9fd5-4b245420d49b",
+               "id": "23",
+               "name": "Ubuntu Wiki (community-edited website)",
+               "type": "url",
+               "url": "http://wiki.ubuntu.com/"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "f1da0fc4-ffb3-4b54-9a37-57df50d8b417",
+               "id": "24",
+               "name": "Make a Support Request to the Ubuntu Community",
+               "type": "url",
+               "url": "https://answers.launchpad.net/ubuntu/+addquestion"
+            }, {
+               "date_added": "13244224031000000",
+               "date_last_used": "0",
+               "guid": "74adcc04-04cd-4e3a-9c28-4a72ab0b6948",
+               "id": "25",
+               "name": "Debian (Ubuntu is based on Debian)",
+               "type": "url",
+               "url": "http://www.debian.org/"
+            } ],
+            "date_added": "13323109671091558",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "1088f4b7-c2b4-488a-894c-58808f282d62",
+            "id": "21",
+            "name": "Ubuntu and Free Software links",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13244224192000000",
+                  "date_last_used": "0",
+                  "guid": "edf8773c-0633-4eed-a62c-287624940a9f",
+                  "id": "28",
+                  "name": "Welcome to Python.org",
+                  "type": "url",
+                  "url": "https://www.python.org/"
+               }, {
+                  "date_added": "13244224211000000",
+                  "date_last_used": "0",
+                  "guid": "1d3f1b68-66d2-4aa4-a7c4-9ea496ffeaeb",
+                  "id": "29",
+                  "name": "cplusplus.com - The C++ Resources Network",
+                  "type": "url",
+                  "url": "https://www.cplusplus.com/"
+               }, {
+                  "date_added": "13244224281000000",
+                  "date_last_used": "0",
+                  "guid": "0148085b-a834-4305-8399-32c21b5c65ca",
+                  "id": "30",
+                  "name": "Java Software | Oracle",
+                  "type": "url",
+                  "url": "https://www.oracle.com/java/"
+               }, {
+                  "children": [ {
+                     "date_added": "13244224356000000",
+                     "date_last_used": "0",
+                     "guid": "403dec67-147d-46fc-b87e-6292e3cfcb1d",
+                     "id": "32",
+                     "name": "Ruby Programming Language",
+                     "type": "url",
+                     "url": "https://www.ruby-lang.org/en/"
+                  }, {
+                     "date_added": "13244224603000000",
+                     "date_last_used": "0",
+                     "guid": "40caffcc-2cca-4955-bdef-a7cba55d6e57",
+                     "id": "33",
+                     "name": "Bash - GNU Project - Free Software Foundation",
+                     "type": "url",
+                     "url": "https://www.gnu.org/software/bash/"
+                  }, {
+                     "date_added": "13244224682000000",
+                     "date_last_used": "0",
+                     "guid": "0cab8ff9-389e-4f50-8367-593bc2a82c6c",
+                     "id": "34",
+                     "name": "The Go Programming Language",
+                     "type": "url",
+                     "url": "https://golang.org/"
+                  }, {
+                     "date_added": "13244224700000000",
+                     "date_last_used": "0",
+                     "guid": "34f3c734-01d2-4241-a9b6-10694ec231a1",
+                     "id": "35",
+                     "name": "The Julia Programming Language",
+                     "type": "url",
+                     "url": "https://julialang.org/"
+                  }, {
+                     "date_added": "13244224735000000",
+                     "date_last_used": "0",
+                     "guid": "5c22dac5-707c-49bd-bd45-e18b5f6b0b0f",
+                     "id": "36",
+                     "name": "MATLAB - MathWorks - MATLAB & Simulink",
+                     "type": "url",
+                     "url": "https://www.mathworks.com/products/matlab.html"
+                  }, {
+                     "date_added": "13244224744000000",
+                     "date_last_used": "0",
+                     "guid": "4da6075a-34be-416c-b029-12a5be22593e",
+                     "id": "37",
+                     "name": "PHP: Hypertext Preprocessor",
+                     "type": "url",
+                     "url": "https://www.php.net/"
+                  }, {
+                     "date_added": "13244224752000000",
+                     "date_last_used": "0",
+                     "guid": "2a3125bf-9e50-474f-8bae-33cdd74fbfb9",
+                     "id": "38",
+                     "name": "The Perl Programming Language - www.perl.org",
+                     "type": "url",
+                     "url": "https://www.perl.org/"
+                  }, {
+                     "date_added": "13244224759000000",
+                     "date_last_used": "0",
+                     "guid": "8195a62c-37e4-4f65-9025-fbff2c956c6a",
+                     "id": "39",
+                     "name": "Swift.org - Welcome to Swift.org",
+                     "type": "url",
+                     "url": "https://swift.org/"
+                  } ],
+                  "date_added": "13323109671092678",
+                  "date_last_used": "0",
+                  "date_modified": "0",
+                  "guid": "44ad0d51-4f6c-4e3f-86d5-c5d9d2c49cd3",
+                  "id": "31",
+                  "name": "Others",
+                  "type": "folder"
+               } ],
+               "date_added": "13323109671092587",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "3f90b607-9bc2-45b2-b9a2-dde5c05a393e",
+               "id": "27",
+               "name": "Languages",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13244230980000000",
+                  "date_last_used": "0",
+                  "guid": "9d71dab4-87f1-4625-b895-3c2eab5a8c8d",
+                  "id": "41",
+                  "name": "The world’s leading software development platform · GitHub",
+                  "type": "url",
+                  "url": "https://github.com/"
+               }, {
+                  "date_added": "13244230989000000",
+                  "date_last_used": "0",
+                  "guid": "52df6db8-5446-42a4-97ce-8f99450bd1a3",
+                  "id": "42",
+                  "name": "Projects · Explore · GitLab",
+                  "type": "url",
+                  "url": "https://gitlab.com/explore"
+               }, {
+                  "date_added": "13244231003000000",
+                  "date_last_used": "0",
+                  "guid": "e971cc70-47f3-400b-b953-f2a496209802",
+                  "id": "43",
+                  "name": "Travis CI - Test and Deploy Your Code with Confidence",
+                  "type": "url",
+                  "url": "https://travis-ci.org/"
+               }, {
+                  "date_added": "13244231032000000",
+                  "date_last_used": "0",
+                  "guid": "76709da2-80f1-4456-9e8a-4bb7c19c7dc4",
+                  "id": "44",
+                  "name": "Bitbucket | The Git solution for professional teams",
+                  "type": "url",
+                  "url": "https://bitbucket.org/product"
+               }, {
+                  "date_added": "13244231045000000",
+                  "date_last_used": "0",
+                  "guid": "77ae87c6-9c9d-43bf-b585-64e4f8da2433",
+                  "id": "45",
+                  "name": "Jenkins",
+                  "type": "url",
+                  "url": "https://www.jenkins.io/"
+               } ],
+               "date_added": "13323109671092812",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "5245fc89-b770-485f-a663-45f44cbf4cee",
+               "id": "40",
+               "name": "Version Control and Testing",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13244231102000000",
+                  "date_last_used": "0",
+                  "guid": "8f2b5e8b-106b-48c7-bdfd-0e0b567a5115",
+                  "id": "47",
+                  "name": "Amazon Web Services (AWS) - Cloud Computing Services",
+                  "type": "url",
+                  "url": "https://aws.amazon.com/"
+               }, {
+                  "date_added": "13244231120000000",
+                  "date_last_used": "0",
+                  "guid": "1913f527-14f5-449c-8ef6-6ebb516438a0",
+                  "id": "48",
+                  "name": "Cloud Computing Services  |  Google Cloud",
+                  "type": "url",
+                  "url": "https://cloud.google.com/"
+               }, {
+                  "date_added": "13244231126000000",
+                  "date_last_used": "0",
+                  "guid": "ad125db0-bb38-435b-ae55-db9585e723b6",
+                  "id": "49",
+                  "name": "Heroku - Google Search",
+                  "type": "url",
+                  "url": "https://www.google.com/search?channel=fs&client=ubuntu&q=Heroku"
+               }, {
+                  "date_added": "13244231169000000",
+                  "date_last_used": "0",
+                  "guid": "deba85e9-7d30-44d2-a352-08a0f4785a3b",
+                  "id": "50",
+                  "name": "DigitalOcean – The developer cloud",
+                  "type": "url",
+                  "url": "https://www.digitalocean.com/"
+               }, {
+                  "date_added": "13244231180000000",
+                  "date_last_used": "0",
+                  "guid": "bcb9f191-1dad-4e79-a225-bfe9419741b7",
+                  "id": "51",
+                  "name": "Netlify: All-in-one platform for automating modern web projects",
+                  "type": "url",
+                  "url": "https://www.netlify.com/"
+               } ],
+               "date_added": "13323109671092897",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "1417e838-7c53-4161-9fe8-3388f0577eb4",
+               "id": "46",
+               "name": "Web Services",
+               "type": "folder"
+            }, {
+               "date_added": "13244231271000000",
+               "date_last_used": "0",
+               "guid": "ee89b1bc-d05b-41d0-8bf5-83fab04f16f8",
+               "id": "52",
+               "name": "Achieve mastery through challenge | Codewars",
+               "type": "url",
+               "url": "https://www.codewars.com/"
+            }, {
+               "date_added": "13244231645000000",
+               "date_last_used": "0",
+               "guid": "4225ce2e-7f36-4885-a591-a2be7c0b6fd4",
+               "id": "53",
+               "name": "Learn to code at home | freeCodeCamp.org",
+               "type": "url",
+               "url": "https://www.freecodecamp.org/"
+            }, {
+               "date_added": "13244231663000000",
+               "date_last_used": "0",
+               "guid": "d84fb044-4912-4745-a4de-31a3f94a8052",
+               "id": "54",
+               "name": "Learn to Code - for Free | Codecademy",
+               "type": "url",
+               "url": "https://www.codecademy.com/"
+            }, {
+               "date_added": "13244231974000000",
+               "date_last_used": "0",
+               "guid": "a4c5f1f6-ad6f-43dc-8c4a-79c17d4c5c20",
+               "id": "55",
+               "name": "The place to protect open source | huntr",
+               "type": "url",
+               "url": "https://www.huntr.dev/"
+            } ],
+            "date_added": "13323109671092130",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "caff69f2-ce04-4271-8dbb-707a971ecebe",
+            "id": "26",
+            "name": "Programming",
+            "type": "folder"
+         }, {
+            "date_added": "13244232555000000",
+            "date_last_used": "0",
+            "guid": "c3f012fe-480d-4eae-b9d4-b3f359c55684",
+            "id": "56",
+            "name": "Google",
+            "type": "url",
+            "url": "https://www.google.com/"
+         }, {
+            "children": [ {
+               "date_added": "13244232665000000",
+               "date_last_used": "0",
+               "guid": "d2f18599-9be5-46cb-858b-897629d717cd",
+               "id": "58",
+               "name": "Yahoo",
+               "type": "url",
+               "url": "https://www.yahoo.com/"
+            }, {
+               "children": [ {
+                  "date_added": "13244224098000000",
+                  "date_last_used": "0",
+                  "guid": "f1065730-db82-455c-88bd-a642caf09129",
+                  "id": "60",
+                  "name": "BMW.com | The international BMW Website",
+                  "type": "url",
+                  "url": "https://www.bmw.com/en/index.html"
+               }, {
+                  "date_added": "13244224111000000",
+                  "date_last_used": "0",
+                  "guid": "7c9da13e-e6f6-4bfd-aee8-37d1e8fa69c4",
+                  "id": "61",
+                  "name": "Audi.com – the international Audi website | audi.com",
+                  "type": "url",
+                  "url": "https://www.audi.com/en.html"
+               }, {
+                  "date_added": "13244224126000000",
+                  "date_last_used": "0",
+                  "guid": "96df320c-f306-4d46-8023-70468276f608",
+                  "id": "62",
+                  "name": "New Cars, Trucks, SUVs & Hybrids | Toyota Official Site",
+                  "type": "url",
+                  "url": "https://www.toyota.com/"
+               }, {
+                  "date_added": "13244224146000000",
+                  "date_last_used": "0",
+                  "guid": "85b08fe9-4ce2-4e57-b9de-ec7dd62617c4",
+                  "id": "63",
+                  "name": "Welcome | Kia Motors Europe",
+                  "type": "url",
+                  "url": "https://www.kia.com/eu/"
+               }, {
+                  "date_added": "13244224163000000",
+                  "date_last_used": "0",
+                  "guid": "0ce03b9f-fc1d-450b-90be-716a8a3f1f38",
+                  "id": "64",
+                  "name": "Official Porsche Website - Dr. Ing. h.c. F. Porsche AG",
+                  "type": "url",
+                  "url": "https://www.porsche.com/"
+               } ],
+               "date_added": "13323109671093579",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "348ea256-6ad0-4d2f-940f-397c7ff199b2",
+               "id": "59",
+               "name": "Cars",
+               "type": "folder"
+            }, {
+               "date_added": "13244232623000000",
+               "date_last_used": "0",
+               "guid": "88740832-523c-4e8c-b09c-ee6dbc5b1d04",
+               "id": "65",
+               "name": "Find your inspiration. | Flickr",
+               "type": "url",
+               "url": "https://www.flickr.com/"
+            } ],
+            "date_added": "13323109671093364",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "71c7e336-61bf-47c3-85c8-453ded3d00ed",
+            "id": "57",
+            "name": "Imported",
+            "type": "folder"
+         } ],
+         "date_added": "13323109642162551",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13244224395000000",
+               "date_last_used": "0",
+               "guid": "bb7c76f4-fa5f-4e6a-baaf-1e1ea3586e59",
+               "id": "7",
+               "meta_info": {
+                    "last_visited_desktop": "13204918293394216"
+                  },
+               "name": "Twitter. It’s what’s happening / Twitter",
+               "type": "url",
+               "url": "https://twitter.com/?lang=en"
+            }, {
+               "date_added": "13244224407000000",
+               "date_last_used": "0",
+               "guid": "14b9ce89-0002-4b9c-9576-d18f3e2126d8",
+               "id": "8",
+               "name": "Facebook - Log In or Sign Up",
+               "type": "url",
+               "url": "https://www.facebook.com/"
+            }, {
+               "date_added": "13244224417000000",
+               "date_last_used": "0",
+               "guid": "4db0f666-2ce1-4551-a2f5-f4ad254abada",
+               "id": "9",
+               "name": "Instagram",
+               "type": "url",
+               "url": "https://www.instagram.com/?hl=en"
+            }, {
+               "date_added": "13244224509000000",
+               "date_last_used": "0",
+               "guid": "fe5c4454-9972-4587-806c-0d49cae5ff35",
+               "id": "10",
+               "name": "WhatsApp",
+               "type": "url",
+               "url": "https://www.whatsapp.com/"
+            }, {
+               "date_added": "13244224530000000",
+               "date_last_used": "0",
+               "guid": "f7cda266-8eeb-4ede-86ec-59af230ccba9",
+               "id": "12",
+               "name": "Pinterest",
+               "type": "url",
+               "url": "https://www.pinterest.com/"
+            }, {
+               "date_added": "13244224541000000",
+               "date_last_used": "0",
+               "guid": "43e8fbd5-f4ea-4eda-ae4b-540dff9b56cc",
+               "id": "13",
+               "name": "LinkedIn: Log In or Sign Up",
+               "type": "url",
+               "url": "https://www.linkedin.com/"
+            }, {
+               "date_added": "13244224547000000",
+               "date_last_used": "0",
+               "guid": "fa7df1dd-e532-4888-a23a-bff6b05a568f",
+               "id": "14",
+               "name": "Discord | Your Place to Talk and Hang Out",
+               "type": "url",
+               "url": "https://discord.com/"
+            } ],
+            "date_added": "13323109671089794",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "972a5f9f-50f4-40bf-8a5b-29634a5c1d05",
+            "id": "6",
+            "name": "Social",
+            "type": "folder"
+         }, {
+            "date_added": "13244224522000000",
+            "date_last_used": "0",
+            "guid": "ece39f4c-fed8-4274-ac66-c6cf0750f264",
+            "id": "11",
+            "name": "reddit: the front page of the internet",
+            "type": "url",
+            "url": "https://www.reddit.com/"
+         } ],
+         "date_added": "13323109642162555",
+         "date_last_used": "0",
+         "date_modified": "13323110095908021",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13323109642162558",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

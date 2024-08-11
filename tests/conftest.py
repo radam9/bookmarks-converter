@@ -12,6 +12,8 @@ TEST_FILE_FIREFOX_JSON = DATA_DIR.joinpath("bookmarks_firefox.json")
 TEST_FILE_FIREFOX_HTML = DATA_DIR.joinpath("bookmarks_firefox.html")
 TEST_FILE_FIREFOX_HTML_UNINDENTED = DATA_DIR.joinpath("bookmarks_firefox_unindented.html")
 TEST_FILE_FIREFOX_HTML_FORMATTED = DATA_DIR.joinpath("bookmarks_firefox_formatted.html")
+TEST_FILE_CHROME_JSON = DATA_DIR.joinpath("bookmarks_chrome.json")
+TEST_FILE_CHROME_HTML = DATA_DIR.joinpath("bookmarks_chrome.html")
 
 
 @pytest.fixture
@@ -43,35 +45,12 @@ def get_data_from_db():
 
 @pytest.fixture
 def read_json():
-    def _function(filepath):
+    def _function(filepath) -> dict:
         with open(filepath, "r", encoding="Utf-8") as file_:
             jsondata = json.load(file_)
         return jsondata
 
     return _function
-
-
-@pytest.fixture
-def url_chrome():
-    return {
-        "date_added": "13244224395000000",
-        "id": "1",
-        "name": "Google",
-        "type": "url",
-        "url": "https://www.google.com",
-    }
-
-
-@pytest.fixture
-def folder_chrome():
-    return {
-        "children": [],
-        "date_added": "13244233436520764",
-        "date_modified": "0",
-        "id": "2",
-        "name": "Main Folder",
-        "type": "folder",
-    }
 
 
 @pytest.fixture

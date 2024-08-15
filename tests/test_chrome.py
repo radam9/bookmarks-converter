@@ -254,9 +254,9 @@ class TestChrome:
         assert result == expected_result
 
     test_json_to_object_folder_params = (
-        pytest.param("", {}, id="normal_folder"),
+        pytest.param(None, {}, id="normal_folder"),
         pytest.param(
-            "",
+            None,
             {"last_visited_desktop": "13204332604026373", "power_bookmark_meta": ""},
             id="meta_info",
         ),

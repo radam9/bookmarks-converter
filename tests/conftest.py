@@ -2,43 +2,41 @@ import json
 from pathlib import Path
 
 import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, with_polymorphic
 
-from bookmarks_converter.models import DBBookmark, Folder, Url, create_engine, sessionmaker
+from bookmarks_converter.models import DBBookmark, DBFolder, DBUrl, Folder, SpecialFolder, Url
 
 TEST_ROOT_DIR = Path(__file__).resolve().parent
 DATA_DIR = TEST_ROOT_DIR.joinpath("resources")
 
 TEST_FILE_FIREFOX_JSON = DATA_DIR.joinpath("bookmarks_firefox.json")
 TEST_FILE_FIREFOX_HTML = DATA_DIR.joinpath("bookmarks_firefox.html")
-TEST_FILE_FIREFOX_HTML_UNINDENTED = DATA_DIR.joinpath("bookmarks_firefox_unindented.html")
-TEST_FILE_FIREFOX_HTML_FORMATTED = DATA_DIR.joinpath("bookmarks_firefox_formatted.html")
 TEST_FILE_CHROME_JSON = DATA_DIR.joinpath("bookmarks_chrome.json")
 TEST_FILE_CHROME_HTML = DATA_DIR.joinpath("bookmarks_chrome.html")
+TEST_FILE_BOOKMARKIE_DB = DATA_DIR.joinpath("bookmarks_bookmarkie.db")
+TEST_FILE_BOOKMARKIE_HTML = DATA_DIR.joinpath("bookmarks_bookmarkie.html")
+TEST_FILE_BOOKMARKIE_JSON = DATA_DIR.joinpath("bookmarks_bookmarkie.json")
+TEST_FILE_BOOKMARKIE_HTML_UNINDENTED = DATA_DIR.joinpath("bookmarks_bookmarkie_unindented.html")
+TEST_FILE_BOOKMARKIE_HTML_FORMATTED = DATA_DIR.joinpath("bookmarks_bookmarkie_formatted.html")
 
 
 @pytest.fixture
 def get_data_from_db():
-    def _function(db_path, source):
+    def _function(db_path: Path) -> DBBookmark:
         database_path = "sqlite:///" + str(db_path)
         engine = create_engine(database_path)
         Session = sessionmaker(bind=engine)
-        session = Session()
-        bookmarks = session.query(DBBookmark).order_by(DBBookmark.id).all()
-        if source != None:
-            root_date = session.query(DBBookmark).filter_by(title="root").one().date_added
-        if source == "Chrome":
-            folder_date = (
-                session.query(DBBookmark).filter_by(title="Other Bookmarks").one().date_added
-            )
-        elif source == "Firefox":
-            folder_date = (
-                session.query(DBBookmark).filter_by(title="Bookmarks Menu").one().date_added
-            )
-        else:
-            root_date = folder_date = None
-        session.close()
-        engine.dispose()
-        return bookmarks, root_date, folder_date
+        with Session() as session:
+            bookmarks = session.query(with_polymorphic(DBBookmark, [DBFolder, DBUrl])).all()
+            session.expunge_all()
+
+        for bookmark in bookmarks:
+            if (
+                isinstance(bookmark, DBFolder)
+                and bookmark.special_folder == SpecialFolder.ROOT.value
+            ):
+                return bookmark
 
     return _function
 
@@ -51,33 +49,6 @@ def read_json():
         return jsondata
 
     return _function
-
-
-@pytest.fixture
-def url_custom():
-    return {
-        "type": "url",
-        "id": 2,
-        "index": 0,
-        "url": "https://www.google.com",
-        "title": "Google",
-        "date_added": 0,
-        "icon": None,
-        "iconuri": "https://www.google.com/favicon.ico",
-        "tags": None,
-    }
-
-
-@pytest.fixture
-def folder_custom():
-    return {
-        "type": "folder",
-        "id": 1,
-        "index": 0,
-        "title": "Main Folder",
-        "date_added": 0,
-        "children": [],
-    }
 
 
 @pytest.fixture(scope="function")

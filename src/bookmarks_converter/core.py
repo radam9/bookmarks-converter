@@ -19,6 +19,7 @@ from typing import Optional
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from .converters.bookmarkie import Bookmarkie
 from .converters.chrome import Chrome
 from .converters.firefox import Firefox
 from .models import Base, DBBookmark
@@ -44,6 +45,7 @@ class BookmarksConverter:
     5- Export the bookmarks to a file using the save method `instance.save()`.
     """
 
+    Bookmarkie = Bookmarkie()
     Chrome = Chrome()
     Firefox = Firefox()
 

@@ -374,7 +374,7 @@ class TestFirefox:
         assert result == expected
 
     test_json_to_object_folder_params = (
-        pytest.param("", {"root": ""}, id="normal_folder"),
+        pytest.param(None, {"root": ""}, id="normal_folder"),
         pytest.param(SpecialFolder.ROOT, {"root": "placesRoot"}, id="root_folder"),
         pytest.param(SpecialFolder.MENU, {"root": "bookmarksMenuFolder"}, id="menu_folder"),
         pytest.param(SpecialFolder.TOOLBAR, {"root": "toolbarFolder"}, id="toolbar_folder"),

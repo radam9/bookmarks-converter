@@ -1,35 +1,96 @@
+import copy
+
 import pytest
 
-from bookmarks_converter.models import HTMLBookmark, DBBookmark, TYPE_FOLDER, TYPE_URL
+from bookmarks_converter.models import (
+    TYPE_FOLDER,
+    TYPE_URL,
+    DBFolder,
+    DBUrl,
+    HTMLBookmark,
+    SpecialFolder,
+)
+
+
+@pytest.fixture(scope="function")
+def folder_db():
+    child = DBFolder(
+        _id=2,
+        guid="9abdc1e1-4e5f-4069-bdc1-e14e5fc069fb",
+        title="test folder",
+        index=0,
+        parent_id=None,
+        date_added=9000,
+        date_modified=7000,
+        special_folder=SpecialFolder.ROOT,
+    )
+    child.children = [
+        DBUrl(
+            _id=3,
+            guid="f4acff60-7500-4110-acff-607500511033",
+            title="test url",
+            index=0,
+            parent_id=None,
+            date_added=9000,
+            date_modified=7000,
+            url="https://www.example.com",
+            icon="some icon data",
+            icon_uri="https://www.exmaple.com/icon",
+            tags=["tag1", "tag2"],
+        )
+    ]
+    main = DBFolder(
+        _id=1,
+        guid="79854084-0957-4817-8540-840957881708",
+        title="test folder",
+        index=1,
+        parent_id=None,
+        date_added=9000,
+        date_modified=7000,
+        special_folder=SpecialFolder.ROOT,
+    )
+    main.children = [child]
+    return main
+
+
+@pytest.fixture(scope="function")
+def url_db():
+    return DBUrl(
+        _id=1,
+        guid="346301a9-7739-42a0-a301-a97739e2a03d",
+        title="test url",
+        index=2,
+        parent_id=None,
+        date_added=9000,
+        date_modified=7000,
+        url="https://www.example.com",
+        icon="some icon data",
+        icon_uri="https://www.exmaple.com/icon",
+        tags=["tag1", "tag2"],
+    )
 
 
 class TestDBBookmark:
-    def test_equality(self):
-        instance_a = DBBookmark(
-            id=1,
-            title="some title",
-            index=0,
-            parent_id=None,
-            date_added=9000,
-            type="folder",
-            children=[],
-        )
-        instance_b = DBBookmark(
-            id=1,
-            title="some title",
-            index=0,
-            parent_id=None,
-            date_added=9000,
-            type="folder",
-            children=[],
-        )
+    def test_equality(self, folder_db):
+        folder_db_new = copy.deepcopy(folder_db)
+        assert folder_db == folder_db_new
 
-        assert instance_a == instance_b
+    def test_equality_false(self, folder_db):
+        folder_db_new = copy.deepcopy(folder_db)
+        folder_db_new.title = "new title"
+        assert folder_db != folder_db_new
 
-    def test_equality_false(self):
-        instance_a = DBBookmark()
-        instance_b = DBBookmark(title="something else")
-        assert instance_a != instance_b
+    def test_type_folder(self):
+        folder = DBFolder(title="", index=0, parent_id=None)
+        assert folder.type == "folder"
+
+    def test_type_url(self):
+        url = DBUrl(index=0, parent_id=None, url="")
+        assert url.type == "url"
+
+    def test_url_no_title(self):
+        url = DBUrl(index=0, parent_id=None, url="https://www.example.com")
+        assert url.title == url.url
 
 
 @pytest.fixture(scope="function")

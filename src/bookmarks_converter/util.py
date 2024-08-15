@@ -30,6 +30,7 @@ def format_html(filepath: Path) -> str:
                 .replace("</H1>", "")
                 .replace("</H3>", "")
                 .replace("</DL><p>\n", "</H3>")
+                .replace("</DL>", "</H3>")
                 .replace("\n", "")
                 .strip()
             )

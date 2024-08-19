@@ -7,6 +7,8 @@ from uuid import uuid4
 
 from bs4 import BeautifulSoup, Tag
 
+from bookmarks_converter.converters.converter import Converter
+from bookmarks_converter.formats import Format
 from bookmarks_converter.models import (
     TYPE_FOLDER,
     TYPE_URL,
@@ -46,7 +48,9 @@ class FolderRoot(Enum):
     Mobile_bookmarks = SpecialFolder.MOBILE
 
 
-class Chrome:
+class Chrome(Converter):
+    formats = (Format.HTML, Format.JSON)
+
     def as_html(self, tree: Bookmark) -> str:
         """Converts bookmark object tree to HTML."""
         footer = "</DL><p>\n"

@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup, Tag
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
+from bookmarks_converter.converters.converter import Converter
+from bookmarks_converter.formats import Format
 from bookmarks_converter.models import (
     TYPE_FOLDER,
     TYPE_URL,
@@ -62,7 +64,9 @@ class FolderRoot(Enum):
     mobile = SpecialFolder.MOBILE
 
 
-class Bookmarkie:
+class Bookmarkie(Converter):
+    formats = (Format.DB, Format.HTML, Format.JSON)
+
     def as_db(self, tree: Bookmark) -> DBBookmark:
         """Convert Bookmarks tree to DBBookmark."""
         return self._convert_to_db(tree)

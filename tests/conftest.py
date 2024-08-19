@@ -19,6 +19,8 @@ TEST_FILE_BOOKMARKIE_HTML = DATA_DIR.joinpath("bookmarks_bookmarkie.html")
 TEST_FILE_BOOKMARKIE_JSON = DATA_DIR.joinpath("bookmarks_bookmarkie.json")
 TEST_FILE_BOOKMARKIE_HTML_UNINDENTED = DATA_DIR.joinpath("bookmarks_bookmarkie_unindented.html")
 TEST_FILE_BOOKMARKIE_HTML_FORMATTED = DATA_DIR.joinpath("bookmarks_bookmarkie_formatted.html")
+TEST_INPUT_FILE = DATA_DIR.joinpath("INPUT_TEST_FILE")
+TEST_OUTPUT_FILE = DATA_DIR.joinpath("OUTPUT_TEST_FILE")
 
 
 @pytest.fixture

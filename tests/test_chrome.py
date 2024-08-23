@@ -18,7 +18,7 @@ class TestChrome:
     def test_as_html(self):
         result = self.chrome.as_html(bookmarks_html(merge_mobile_to_others=True, include_menu=True))
 
-        with open(TEST_FILE_CHROME_HTML, "r") as f:
+        with TEST_FILE_CHROME_HTML.open("r", encoding="utf-8") as f:
             expected = f.read()
 
         assert result == expected

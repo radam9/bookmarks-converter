@@ -104,7 +104,7 @@ class TestBookmarkie:
     def test_as_html(self):
         result = self.bookmarkie.as_html(bookmarks_html())
 
-        with open(TEST_FILE_BOOKMARKIE_HTML, "r") as f:
+        with TEST_FILE_BOOKMARKIE_HTML.open("r", encoding="utf-8") as f:
             expected = f.read()
 
         assert result == expected

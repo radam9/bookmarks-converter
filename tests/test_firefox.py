@@ -32,7 +32,7 @@ class TestFirefox:
     def test_as_html(self):
         result = self.firefox.as_html(bookmarks_html(include_mobile=True))
 
-        with open(TEST_FILE_FIREFOX_HTML, "r") as f:
+        with TEST_FILE_FIREFOX_HTML.open("r", encoding="utf-8") as f:
             expected = f.read()
 
         assert result == expected

@@ -45,8 +45,8 @@ def get_data_from_db():
 
 @pytest.fixture
 def read_json():
-    def _function(filepath) -> dict:
-        with open(filepath, "r", encoding="Utf-8") as file_:
+    def _function(filepath: Path) -> dict:
+        with filepath.open("r", encoding="utf-8") as file_:
             jsondata = json.load(file_)
         return jsondata
 

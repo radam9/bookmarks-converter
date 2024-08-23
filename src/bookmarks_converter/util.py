@@ -17,7 +17,7 @@ def format_html(filepath: Path) -> str:
     filepath: str
         absolute path to bookmarks html file.
     """
-    with open(filepath, "r", encoding="utf-8") as input_file:
+    with filepath.open("r", encoding="utf-8") as input_file:
         # regex to select an entire H1/H3/A HTML element
         element = re.compile(r"(<(H1|H3|A))(.*?(?=>))>(.*)(<\/\2>)\n")
 

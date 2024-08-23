@@ -95,12 +95,12 @@ def save_db(bookmarks: DBBookmark, filepath: Path):
 def save_html(bookmarks: str, filepath: Optional[Path] = None):
     """Export the bookmarks as HTML."""
     _ensure_path_exists(filepath)
-    with open(filepath, "w", encoding="utf-8") as file:
+    with filepath.open("w", encoding="utf-8") as file:
         file.write(bookmarks)
 
 
 def save_json(bookmarks: dict, filepath: Path):
     """Function to export the bookmarks as JSON."""
     _ensure_path_exists(filepath)
-    with open(filepath, "w", encoding="utf-8") as file:
+    with filepath.open("w", encoding="utf-8") as file:
         json.dump(bookmarks, file, ensure_ascii=False, indent=2)

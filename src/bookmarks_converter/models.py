@@ -1,109 +1,58 @@
 import itertools
 import time
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Optional
+from uuid import uuid4
 
 from bs4 import Tag
-from sqlalchemy import Column, ForeignKey, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import backref, relationship, sessionmaker
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import DeclarativeBase, Mapped, relationship
 
-engine = create_engine("sqlite:///:memory:")
-Session = sessionmaker(bind=engine)
-session = Session()
-Base = declarative_base()
+TYPE_FOLDER = "folder"
+TYPE_URL = "url"
 
 
-class NodeMixin:
-    """Mixin class containing the methods used to create folders/urls in
-    different formats HTML/JSON/DB, used in the creation of new bookmark tree
-    in a different format."""
-
-    def _convert_folder_to_db(self):
-        """Convert a (html or json) folder object to a database folder object."""
-        self._check_instance_type("folder")
-        folder = Folder(
-            _id=self.id,
-            index=self.index,
-            parent_id=self.parent_id,
-            title=self.title,
-            date_added=self.date_added,
-        )
-        return folder
-
-    def _convert_url_to_db(self):
-        """Convert a url (html or json) object to a database url object."""
-        self._check_instance_type("url")
-        url = Url(
-            _id=self.id,
-            index=self.index,
-            parent_id=self.parent_id,
-            title=self.title,
-            date_added=self.date_added,
-            url=self.url,
-            icon=self.icon,
-            icon_uri=self.icon_uri,
-            tags=self.tags,
-        )
-        return url
-
-    def _convert_folder_to_html(self):
-        """Convert a (database or json) folder object to a html folder string."""
-        self._check_instance_type("folder")
-        if self.title in ("Bookmarks Toolbar", "Bookmarks bar", "toolbar"):
-            return f'<DT><H3 ADD_DATE="{self.date_added}" LAST_MODIFIED="0" PERSONAL_TOOLBAR_FOLDER="true">{self.title}</H3>\n'
-        elif self.title in ("Other Bookmarks", "unfiled"):
-            return f'<DT><H3 ADD_DATE="{self.date_added}" LAST_MODIFIED="0" UNFILED_BOOKMARKS_FOLDER="true">{self.title}</H3>\n'
-        else:
-            return f'<DT><H3 ADD_DATE="{self.date_added}" LAST_MODIFIED="0">{self.title}</H3>\n'
-
-    def _convert_url_to_html(self):
-        """Convert a (database or json) url object to a html url string."""
-        self._check_instance_type("url")
-        return f'<DT><A HREF="{self.url}" ADD_DATE="{self.date_added}" LAST_MODIFIED="0" ICON_URI="{self.icon_uri}" ICON="{self.icon}">{self.title}</A>\n'
-
-    def _convert_folder_to_json(self):
-        """Convert a (database or html) folder object to a json folder object."""
-        self._check_instance_type("folder")
-        folder = {
-            "type": self.type,
-            "id": self.id,
-            "index": self.index,
-            "title": self.title,
-            "date_added": self.date_added,
-            "children": [],
-        }
-        return folder
-
-    def _convert_url_to_json(self):
-        """Convert a (database or html) url object to a json url object."""
-        self._check_instance_type("url")
-        url = {
-            "type": self.type,
-            "id": self.id,
-            "index": self.index,
-            "title": self.title,
-            "date_added": self.date_added,
-            "url": self.url,
-            "icon": self.icon,
-            "iconuri": self.icon_uri,
-            "tags": self.tags,
-        }
-        return url
-
-    def _check_instance_type(self, type_):
-        """ "Check that the type of the instance matches the type of executed method"""
-        if self.type != type_:
-            raise TypeError(f"The item you are converting is not a {type_}")
-
-    def __iter__(self):
-        """Iterating over an Object iterates over its contents."""
-        return iter(self.children)
-
-    def __repr__(self):
-        """Bookmark object representation"""
-        return f"{self.title} - {self.type} - id: {self.id}"
+class SpecialFolder(Enum):
+    ROOT = "root"
+    MENU = "menu"
+    TOOLBAR = "toolbar"
+    OTHER = "other"
+    MOBILE = "mobile"
 
 
-class Bookmark(Base, NodeMixin):
+@dataclass
+class Bookmark:
+    id: int
+    guid: str
+    index: int
+    title: str
+    date_added: int
+    date_modified: int
+
+
+@dataclass
+class Folder(Bookmark):
+    special_folder: Optional[SpecialFolder] = None
+    children: list[Bookmark] = field(default_factory=list)
+
+
+@dataclass
+class Url(Bookmark):
+    url: str
+    icon: str = ""
+    icon_uri: str = ""
+    tags: list[str] = field(default_factory=list)
+
+    def icon_uri_is_set(self) -> bool:
+        return self.icon_uri != ""
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+class DBBookmark(Base):
     """Base model for the Url and Folder model.
     (used for Single Table Inheritance)
     ...
@@ -111,236 +60,201 @@ class Bookmark(Base, NodeMixin):
     ----------
     id : int
         id of the bookmark (url/folder)
+    guid : str
+        guid of the bookmark (url/folder), this is usually a uuid in str format.
     title : str
         title of bookmark (url/folder)
+    index : int
+        current index of the bookmark (url/folder) in the parent folder
     date_added : datetime
         date bookmark (url/folder) was added on
-    index : int
-        current index to remember order of bookmark (url/folder) in folder
+    date_modified : datetime
+        date bookmark (url/folder) was last modified on
+    type : str
+        type of the bookmark (url/folder)
     parent_id : int
         id of the folder the bookmark (url/folder) is contained in
     parent : relation
-        Many to One relation for the Folder, containing the
-        bookmarks (url/folder)
+        Many to One relation for the Folder, containing the bookmarks (url/folder)
     """
 
     __tablename__ = "bookmark"
 
     id = Column(Integer, primary_key=True)
+    guid = Column(String, unique=True, default=str(uuid4()))
     title = Column(String)
     index = Column(Integer)
     parent_id = Column(Integer, ForeignKey("bookmark.id"), nullable=True)
     date_added = Column(Integer, nullable=False, default=round(time.time() * 1000))
+    date_modified = Column(Integer, nullable=False, default=0)
     type = Column(String)
-    parent = relationship(
-        "Bookmark",
-        cascade="save-update, merge",
-        backref=backref("children", cascade="all", order_by="Bookmark.index"),
-        lazy=False,
-        remote_side="Bookmark.id",
+    parent: Mapped["DBFolder"] = relationship(
+        back_populates="children", remote_side="DBBookmark.id"
     )
 
     __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "bookmark"}
 
-    def insert(self):
-        """Insert a Bookmark object into the database."""
-        session.add(self)
-        session.commit()
-
-    def update(self):
-        """Update a Bookmark object in the database"""
-        session.commit()
-
-    def delete(self):
-        """Delete a Bookmark object from the database"""
-        session.delete(self)
-        session.commit()
-
     def __eq__(self, other):
         if not isinstance(other, type(self)):
-            return NotImplemented
-        # skip if the attribute is '_sa_instance_state' which is in
-        # .__dict__ and vars(), since the object is a sqlalchemy object.
+            return ValueError
+        # skip if the attribute is '_sa_instance_state' which is in .__dict__
+        # since the object is a sqlalchemy object.
         remove = "_sa_instance_state"
-        vars_self = vars(self).copy()
-        vars_other = vars(other).copy()
-        del vars_self[remove]
-        del vars_other[remove]
+        vars_self = {k: v for k, v in self.__dict__.items() if k != remove}
+        vars_other = {k: v for k, v in other.__dict__.items() if k != remove}
         return vars_self == vars_other
 
+    def __repr__(self):
+        """__repr__ function that mimics the @dataclass __repr__ method."""
+        sorted_field = sorted(
+            field_ for field_ in vars(self) if field_ not in ("_sa_instance_state", "parent")
+        )
+        fields = (
+            f"{name}={value!r}"
+            for field_ in sorted_field
+            for name, value in ((field_, self.__getattribute__(field_)),)
+        )
+        return f'{self.__class__.__name__}({", ".join(fields)})'
 
-class Folder(Bookmark):
+
+class DBFolder(DBBookmark):
     """Model representing bookmark folders
     ...
     Attributes
     ----------
     id : int
         id of the folder
+    guid : str
+        guid of the folder, this is usually a uuid in str format.
     title : str
         name of the folder
     date_added : datetime
         date folder was added on
+    date_modified : datetime
+        date folder was last modified on
     parent_id : int
         id of parent folder
     index : int
-        current index in parent folder
+        current index in the parent folder
     children : db relationship
-        urls contained in the folder"""
+        urls contained in the folder
+    special_folder : str
+        describes if the folder is a special folder, and which type of special folder it is."""
 
-    __mapper_args__ = {"polymorphic_identity": "folder"}
-
-    def __init__(self, title, index, parent_id, _id=None, date_added=None):
-        if _id:
-            self.id = _id
-        self.title = title
-        self.index = index
-        self.parent_id = parent_id
-        self.date_added = date_added
-
-
-class Url(Bookmark):
-    """Model representing the URLs
-    ...
-    Attributes
-    ----------
-    id : int
-        id of the url
-    title : str
-        title of url
-    url : str
-        url address
-    date_added : datetime
-        date url was added on
-    icon : str
-        html icon data
-    icon_uri : str
-        html icon_uri found in firefox bookmarks
-    tags : str
-        tags describing url
-    index : int
-        current index to remember order of urls in folder
-    parent_id : int
-        id of the folder the url is contained in"""
-
-    url = Column(String)
-    icon = Column(String)
-    icon_uri = Column(String)
-    tags = Column(String)
-
-    __mapper_args__ = {"polymorphic_identity": "url"}
+    children: Mapped[list[DBBookmark]] = relationship(
+        # back_populates="parent",
+        order_by="DBBookmark.index",
+        lazy=False,
+        join_depth=9000,
+        uselist=True,
+        remote_side="DBBookmark.parent_id",
+    )
+    special_folder = Column(String, unique=True, nullable=True, default=None)
+    __mapper_args__ = {"polymorphic_identity": "folder", "polymorphic_on": "type"}
 
     def __init__(
         self,
         title,
         index,
         parent_id,
+        _id=None,
+        guid=None,
+        date_added=None,
+        date_modified=None,
+        special_folder=None,
+    ):
+        self.type = "folder"
+        if _id:
+            self.id = _id
+        self.guid = guid
+        self.title = title
+        self.index = index
+        self.parent_id = parent_id
+        self.date_added = date_added
+        self.date_modified = date_modified
+        self.special_folder = special_folder
+
+
+class DBUrl(DBBookmark):
+    """Model representing the URLs
+    ...
+    Attributes
+    ----------
+    id : int
+        id of the url
+    guid : str
+        guid of the url, this is usually a uuid in str format.
+    title : str
+        title of url
+    index : int
+        current index in the parent folder
+    date_added : datetime
+        date url was added on
+    parent_id : int
+        id of the folder the bookmark (url/folder) is contained in
+    url : str
+        url address
+    icon : str
+        html icon data
+    icon_uri : str
+        html icon_uri found in firefox bookmarks
+    tags : str
+        tags describing url"""
+
+    url = Column(String)
+    icon = Column(String)
+    icon_uri = Column(String)
+    tags = Column(String)
+
+    __mapper_args__ = {"polymorphic_identity": "url", "polymorphic_on": "type"}
+
+    def __init__(
+        self,
+        index,
+        parent_id,
         url,
         _id=None,
+        title=None,
+        guid=None,
         date_added=None,
+        date_modified=None,
         icon=None,
         icon_uri=None,
         tags=None,
     ):
+        self.type = "url"
         if _id:
             self.id = _id
-        if title == None:
+        self.title = title
+        if not title:
             self.title = url
-        else:
-            self.title = title
+
+        self.guid = guid
         self.index = index
         self.parent_id = parent_id
         self.date_added = date_added
+        self.date_modified = date_modified
         self.url = url
         self.icon = icon
         self.icon_uri = icon_uri
         self.tags = tags
 
 
-class JSONBookmark(NodeMixin):
-    """JSON Bookmark class used to create objects out of the folders/urls in a
-    json bookmarks file while importing (json.load) using the object_hook.
-
-    Attributes:
-    ----------
-    id: int
-        id of the element
-    index : int
-        index (position) of the element in its parent
-    parent_id : int
-        id of the element's parent
-    title : str
-        title (name) of the element
-    date_added : float
-        date (time since epoch) at which the element was
-    created/added to the bookmarks
-    type : str
-        element type (folder or url)
-    children : list of dict
-        children of the current element
-    source : str
-        source of bookmark element (chrome/firefox/bookmarkie)
-
-    Parameters:
-    -----------
-    The class expects a mix of parameters similar to the attributes, they vary
-    depending on the element type (folder/url)"""
-
-    def __init__(self, **kwargs):
-        # Chrome has added a new field in their json file `meta_info`.
-        # This field is a dictionary with key/value pairs, and doesn't have an `id` field.
-        # ignore this field for the time being as it contains meta information.
-        if "id" not in kwargs:
-            return
-
-        # check the version of the passed json file depending on unique elements
-        # that exist in each source.
-        if "name" in kwargs:
-            self.source = "Chrome"
-        elif "typeCode" in kwargs:
-            self.source = "Firefox"
-        else:
-            self.source = "Bookmarkie"
-
-        self.id = int(kwargs.pop("id"))
-        self.index = kwargs.pop("index", None)
-        self.parent_id = kwargs.pop("parent_id", None)
-        # chrome uses different key for title
-        self.title = kwargs.pop("title", kwargs.pop("name", None))
-        # firefox uses different key for date_added
-        self.date_added = int(kwargs.pop("date_added", kwargs.pop("dateAdded", None)))
-
-        temp = kwargs.pop("type")
-        if temp in ("folder", "text/x-moz-place-container"):
-            self.type = "folder"
-            self.children = kwargs.pop("children", [])
-        elif temp in ("url", "text/x-moz-place"):
-            self.type = "url"
-            # firefox uses different key for url
-            self.url = kwargs.pop("url", kwargs.pop("uri", None))
-            self.icon = kwargs.pop("icon", None)
-            # firefox uses different key for icon_uri
-            self.icon_uri = kwargs.pop("icon_uri", kwargs.pop("iconuri", None))
-            self.tags = kwargs.pop("tags", None)
-
-        if self.source == "Chrome":
-            # chrome starts id from 0 not 1, add 1 to adjust
-            self.id += 1
-            # adjusting epoch for chrome timestamp
-            self.date_added = self.date_added - 11644473600000000
-
-
-class HTMLBookmark(Tag, NodeMixin):
+class HTMLBookmark(Tag):
     """TreeBuilder class, used to add additional functionality to the
     BeautifulSoup Tag class. The following functionality is added:
 
-    - add id to each folder("h3")/url("a") being imported
+    - add id to each folder("h3")/url("a") being imported, the id count starts at `2`.
+        this is because the id `1` is reserved for the root folder which is not parsed by
+        the BeautifulSoup Tag class.
     - add property access to the Tag class' attributes
-      (date_added, icon, icon_uri, id, index, title, type and url)
-      which are usually found at the 'self.attrs' dictionary.
-    - add a setter for (id, index and title)
-    - redirect the self.children from an iterator `iter(self.contents)`
+      (date_added, date_modified, icon, icon_uri, id, index, title, type and url)
+      which are usually found in the 'self.attrs' dictionary.
+    - add a setter for (id and title)
+    - change the self.children from an iterator `iter(self.contents)`
     to a list `self.contents` directly"""
 
+    # Counter used to add the `id` to each element parsed.
     id_counter = itertools.count(start=2)
 
     def __init__(self, *args, **kwargs):
@@ -348,64 +262,69 @@ class HTMLBookmark(Tag, NodeMixin):
         if self.name in ("a", "h3"):
             if not self.attrs.get("id"):
                 self.attrs["id"] = next(__class__.id_counter)
+        self.attrs["guid"] = str(uuid4())
 
     @property
-    def date_added(self):
-        """Redirect the `add_date` lookup to a `date_added` attribute.
-        add a `date_added` with current datetime if it doesn't exist"""
+    def date_added(self) -> int:
+        """The date_added value in html bookmarks is in seconds, so we convert to microseconds"""
         date_added = self.attrs.get("add_date")
         if not date_added:
             date_added = round(time.time() * 1000)
-        return int(date_added)
+        return int(date_added) * 1000_000
 
     @property
-    def icon(self):
-        """Redirect the `icon` lookup to a `icon` attribute."""
-        return self.attrs.get("icon")
+    def date_modified(self) -> int:
+        """The date_modified value in html bookmarks is in seconds, so we convert to microseconds"""
+        date_modified = self.attrs.get("last_modified")
+        if not date_modified:
+            date_modified = 0
+        return int(date_modified) * 1000_000
 
     @property
-    def icon_uri(self):
-        """Redirect the `iconuri` lookup to a `icon_uri` attribute."""
-        return self.attrs.get("iconuri")
+    def icon(self) -> str:
+        return self.attrs.get("icon", "")
+
+    @property
+    def icon_uri(self) -> str:
+        return self.attrs.get("icon_uri", "")
 
     @property
     def id(self):
-        """Redirect the `id` lookup to a `id` attribute."""
         return self.attrs.get("id")
 
     @id.setter
-    def id(self, new_id):
+    def id(self, new_id: int):
         self.attrs["id"] = new_id
 
     @property
-    def index(self):
-        """Redirect the `index` lookup to a `index` attribute."""
-        return self.attrs.get("index")
-
-    @index.setter
-    def index(self, new_index):
-        self.attrs["index"] = new_index
+    def guid(self) -> str:
+        return self.attrs.get("guid")
 
     @property
-    def title(self):
-        """Redirect the `title` lookup to a `title` attribute."""
+    def index(self) -> int:
+        return self.attrs.get("index")
+
+    @property
+    def title(self) -> str:
         return self.attrs.get("title")
 
     @title.setter
-    def title(self, new_title):
+    def title(self, new_title: str):
         self.attrs["title"] = new_title
 
     @property
-    def type(self):
-        """Add a type attribute defining the type of object the instance is."""
+    def type(self) -> str:
         if self.name == "h3":
-            return "folder"
+            return TYPE_FOLDER
         elif self.name == "a":
-            return "url"
+            return TYPE_URL
 
     @property
-    def url(self):
-        """Redirect the `href` lookup to a `url` attribute."""
+    def tags(self) -> list[str]:
+        return self.attrs.get("tags", [])
+
+    @property
+    def url(self) -> str:
         return self.attrs.get("href")
 
     @property
@@ -416,5 +335,29 @@ class HTMLBookmark(Tag, NodeMixin):
 
     @classmethod
     def reset_id_counter(cls):
-        """Reset the id_counter."""
         cls.id_counter = itertools.count(start=2)
+
+    def _as_folder(self, index: int) -> Folder:
+        return Folder(
+            id=self.id,
+            guid=self.guid,
+            index=index,
+            title=self.title,
+            date_added=self.date_added,
+            date_modified=self.date_modified,
+            children=[],
+        )
+
+    def _as_url(self, index: int) -> Url:
+        return Url(
+            id=self.id,
+            guid=self.guid,
+            index=index,
+            title=self.title,
+            date_added=self.date_added,
+            date_modified=self.date_modified,
+            url=self.url,
+            icon=self.icon,
+            icon_uri=self.icon_uri,
+            tags=self.tags,
+        )

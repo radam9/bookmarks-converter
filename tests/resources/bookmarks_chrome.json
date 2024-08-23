@@ -1,0 +1,348 @@
+{
+  "checksum": "ec1d2e7a27c8e329fbfaaabf46060eca",
+  "roots": {
+    "bookmark_bar": {
+      "children": [
+        {
+          "date_added": "13244224031000000",
+          "date_last_used": "0",
+          "guid": "5790a342-a467-4e72-bfa5-0784e1b88755",
+          "id": "2",
+          "name": "Getting Started",
+          "type": "url",
+          "url": "https://www.mozilla.org/en-US/firefox/central/"
+        },
+        {
+          "children": [
+            {
+              "date_added": "13244224031000000",
+              "date_last_used": "0",
+              "guid": "cb74c62c-e8a5-4fa1-aca7-7da22c5f7db0",
+              "id": "5",
+              "name": "Help and Tutorials",
+              "type": "url",
+              "url": "https://support.mozilla.org/en-US/products/firefox"
+            },
+            {
+              "date_added": "13244224031000000",
+              "date_last_used": "0",
+              "guid": "f2868e80-6135-4ca0-8185-d9a9779fbc51",
+              "id": "6",
+              "name": "Customize Firefox",
+              "type": "url",
+              "url": "https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+            },
+            {
+              "date_added": "13244224031000000",
+              "date_last_used": "0",
+              "guid": "0abfac5b-f818-493e-921f-2d1b1d9dab74",
+              "id": "7",
+              "name": "Get Involved",
+              "type": "url",
+              "url": "https://www.mozilla.org/en-US/contribute/"
+            },
+            {
+              "date_added": "13244224031000000",
+              "date_last_used": "0",
+              "guid": "20344d1e-e7f8-495a-b464-c169b34ed23e",
+              "id": "8",
+              "name": "About Us",
+              "type": "url",
+              "url": "https://www.mozilla.org/en-US/about/"
+            }
+          ],
+          "date_added": "13323109671091028",
+          "date_last_used": "0",
+          "date_modified": "0",
+          "guid": "c4437552-d0f4-4f55-96d9-dd2f3bb3749a",
+          "id": "4",
+          "name": "Mozilla Firefox",
+          "type": "folder"
+        },
+        {
+          "date_added": "13244224031000000",
+          "date_last_used": "0",
+          "guid": "98c3f6bb-86a2-4974-8f92-39ce8a0ceb57",
+          "id": "10",
+          "name": "Ubuntu",
+          "type": "url",
+          "url": "http://www.ubuntu.com/"
+        },
+        {
+          "date_added": "13244224031000000",
+          "date_last_used": "0",
+          "guid": "49abd2b9-65f1-442e-9fd5-4b245420d49b",
+          "id": "11",
+          "name": "Ubuntu Wiki (community-edited website)",
+          "type": "url",
+          "url": "http://wiki.ubuntu.com/"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "date_added": "13244224192000000",
+                  "date_last_used": "0",
+                  "guid": "edf8773c-0633-4eed-a62c-287624940a9f",
+                  "id": "16",
+                  "name": "Welcome to Python.org",
+                  "type": "url",
+                  "url": "https://www.python.org/"
+                },
+                {
+                  "date_added": "13244224682000000",
+                  "date_last_used": "0",
+                  "guid": "0cab8ff9-389e-4f50-8367-593bc2a82c6c",
+                  "id": "22",
+                  "name": "The Go Programming Language",
+                  "type": "url",
+                  "url": "https://golang.org/"
+                },
+                {
+                  "date_added": "13244224211000000",
+                  "date_last_used": "0",
+                  "guid": "1d3f1b68-66d2-4aa4-a7c4-9ea496ffeaeb",
+                  "id": "17",
+                  "name": "cplusplus.com - The C++ Resources Network",
+                  "type": "url",
+                  "url": "https://www.cplusplus.com/"
+                }
+              ],
+              "date_added": "13323109671092587",
+              "date_last_used": "0",
+              "date_modified": "13364416354307670",
+              "guid": "3f90b607-9bc2-45b2-b9a2-dde5c05a393e",
+              "id": "15",
+              "name": "Languages",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "date_added": "13244231102000000",
+                  "date_last_used": "0",
+                  "guid": "8f2b5e8b-106b-48c7-bdfd-0e0b567a5115",
+                  "id": "29",
+                  "name": "Amazon Web Services (AWS) - Cloud Computing Services",
+                  "type": "url",
+                  "url": "https://aws.amazon.com/"
+                },
+                {
+                  "date_added": "13244231120000000",
+                  "date_last_used": "0",
+                  "guid": "1913f527-14f5-449c-8ef6-6ebb516438a0",
+                  "id": "30",
+                  "name": "Cloud Computing Services  |  Google Cloud",
+                  "type": "url",
+                  "url": "https://cloud.google.com/"
+                },
+                {
+                  "date_added": "13244231169000000",
+                  "date_last_used": "0",
+                  "guid": "deba85e9-7d30-44d2-a352-08a0f4785a3b",
+                  "id": "32",
+                  "name": "DigitalOcean – The developer cloud",
+                  "type": "url",
+                  "url": "https://www.digitalocean.com/"
+                }
+              ],
+              "date_added": "13323109671092897",
+              "date_last_used": "0",
+              "date_modified": "0",
+              "guid": "1417e838-7c53-4161-9fe8-3388f0577eb4",
+              "id": "28",
+              "name": "Web Services",
+              "type": "folder"
+            },
+            {
+              "date_added": "13244231271000000",
+              "date_last_used": "0",
+              "guid": "ee89b1bc-d05b-41d0-8bf5-83fab04f16f8",
+              "id": "34",
+              "name": "Achieve mastery through challenge | Codewars",
+              "type": "url",
+              "url": "https://www.codewars.com/"
+            },
+            {
+              "date_added": "13244231645000000",
+              "date_last_used": "0",
+              "guid": "4225ce2e-7f36-4885-a591-a2be7c0b6fd4",
+              "id": "35",
+              "name": "Learn to code at home | freeCodeCamp.org",
+              "type": "url",
+              "url": "https://www.freecodecamp.org/"
+            },
+            {
+              "date_added": "13244231663000000",
+              "date_last_used": "0",
+              "guid": "d84fb044-4912-4745-a4de-31a3f94a8052",
+              "id": "36",
+              "name": "Learn to Code - for Free | Codecademy",
+              "type": "url",
+              "url": "https://www.codecademy.com/"
+            }
+          ],
+          "date_added": "13323109671092130",
+          "date_last_used": "0",
+          "date_modified": "0",
+          "guid": "caff69f2-ce04-4271-8dbb-707a971ecebe",
+          "id": "14",
+          "name": "Programming",
+          "type": "folder"
+        }
+      ],
+      "date_added": "13323109642162551",
+      "date_last_used": "0",
+      "date_modified": "13364416379417933",
+      "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+      "id": "1",
+      "name": "Bookmarks bar",
+      "type": "folder"
+    },
+    "other": {
+      "children": [
+        {
+          "children": [
+            {
+              "date_added": "13244224407000000",
+              "date_last_used": "0",
+              "guid": "14b9ce89-0002-4b9c-9576-d18f3e2126d8",
+              "id": "50",
+              "name": "Facebook - Log In or Sign Up",
+              "type": "url",
+              "url": "https://www.facebook.com/"
+            },
+            {
+              "date_added": "13244224547000000",
+              "date_last_used": "0",
+              "guid": "fa7df1dd-e532-4888-a23a-bff6b05a568f",
+              "id": "51",
+              "name": "Discord | Your Place to Talk and Hang Out",
+              "type": "url",
+              "url": "https://discord.com/"
+            },
+            {
+              "date_added": "13244224541000000",
+              "date_last_used": "0",
+              "guid": "43e8fbd5-f4ea-4eda-ae4b-540dff9b56cc",
+              "id": "52",
+              "name": "LinkedIn: Log In or Sign Up",
+              "type": "url",
+              "url": "https://www.linkedin.com/"
+            }
+          ],
+          "date_added": "13323109671089794",
+          "date_last_used": "0",
+          "date_modified": "0",
+          "guid": "972a5f9f-50f4-40bf-8a5b-29634a5c1d05",
+          "id": "49",
+          "name": "Social",
+          "type": "folder"
+        },
+        {
+          "date_added": "13244224522000000",
+          "date_last_used": "0",
+          "guid": "ece39f4c-fed8-4274-ac66-c6cf0750f264",
+          "id": "53",
+          "name": "reddit: the front page of the internet",
+          "type": "url",
+          "url": "https://www.reddit.com/"
+        },
+        {
+          "date_added": "13244224395000000",
+          "date_last_used": "0",
+          "guid": "bb7c76f4-fa5f-4e6a-baaf-1e1ea3586e59",
+          "id": "54",
+          "name": "Twitter. It’s what’s happening / Twitter",
+          "type": "url",
+          "url": "https://twitter.com/?lang=en"
+        },
+        {
+          "date_added": "13244224417000000",
+          "date_last_used": "0",
+          "guid": "4db0f666-2ce1-4551-a2f5-f4ad254abada",
+          "id": "55",
+          "name": "Instagram",
+          "type": "url",
+          "url": "https://www.instagram.com/?hl=en"
+        }
+      ],
+      "date_added": "13323109642162555",
+      "date_last_used": "0",
+      "date_modified": "13323110095908021",
+      "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+      "id": "48",
+      "name": "Other bookmarks",
+      "type": "folder"
+    },
+    "synced": {
+      "children": [
+        {
+          "children": [
+            {
+              "date_added": "13244230980000000",
+              "date_last_used": "0",
+              "guid": "9d71dab4-87f1-4625-b895-3c2eab5a8c8d",
+              "id": "58",
+              "name": "The world’s leading software development platform · GitHub",
+              "type": "url",
+              "url": "https://github.com/"
+            },
+            {
+              "date_added": "13244230989000000",
+              "date_last_used": "0",
+              "guid": "52df6db8-5446-42a4-97ce-8f99450bd1a3",
+              "id": "59",
+              "name": "Projects · Explore · GitLab",
+              "type": "url",
+              "url": "https://gitlab.com/explore"
+            },
+            {
+              "date_added": "13244231032000000",
+              "date_last_used": "0",
+              "guid": "76709da2-80f1-4456-9e8a-4bb7c19c7dc4",
+              "id": "60",
+              "name": "Bitbucket | The Git solution for professional teams",
+              "type": "url",
+              "url": "https://bitbucket.org/product"
+            }
+          ],
+          "date_added": "13323109671092812",
+          "date_last_used": "0",
+          "date_modified": "0",
+          "guid": "5245fc89-b770-485f-a663-45f44cbf4cee",
+          "id": "57",
+          "name": "Version Control and Testing",
+          "type": "folder"
+        },
+        {
+          "date_added": "13244231003000000",
+          "date_last_used": "0",
+          "guid": "e971cc70-47f3-400b-b953-f2a496209802",
+          "id": "61",
+          "name": "Continuous Integration and Delivery - CircleCI",
+          "type": "url",
+          "url": "https://circleci.com/"
+        },
+        {
+          "date_added": "13244231045000000",
+          "date_last_used": "0",
+          "guid": "77ae87c6-9c9d-43bf-b585-64e4f8da2433",
+          "id": "62",
+          "name": "Jenkins",
+          "type": "url",
+          "url": "https://www.jenkins.io/"
+        }
+      ],
+      "date_added": "13323109642162558",
+      "date_last_used": "0",
+      "date_modified": "0",
+      "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+      "id": "56",
+      "name": "Mobile bookmarks",
+      "type": "folder"
+    }
+  },
+  "version": 1
+}

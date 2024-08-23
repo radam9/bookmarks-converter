@@ -1,1 +1,3 @@
-from .core import BookmarksConverter
+from bookmarks_converter.converters.bookmarkie import Bookmarkie
+from bookmarks_converter.converters.chrome import Chrome
+from bookmarks_converter.converters.firefox import Firefox

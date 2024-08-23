@@ -1,21 +1,33 @@
 # Bookmarks Converter
 
 ---
-[![image](https://img.shields.io/github/workflow/status/radam9/bookmarks-converter/build-deploy/main?style=flat-square)](https://github.com/radam9/bookmarks-converter)
+[![image](https://img.shields.io/github/actions/workflow/status/radam9/bookmarks-converter/build-deploy.yml?branch=main&style=flat-square)](https://github.com/radam9/bookmarks-converter)
 [![image](https://img.shields.io/github/license/radam9/bookmarks-converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
 [![image](https://img.shields.io/pypi/pyversions/bookmarks-converter?style=flat-square)](https://pypi.org/project/bookmarks-converter/)
 
 
-Bookmarks Converter is a package that converts the webpage bookmarks
-from `DataBase`/`HTML`/`JSON` to `DataBase`/`HTML`/`JSON`. It can be used as a `module` or using the [CLI](#usage-as-cli).
+BookmarksConverter is a package that converts browser bookmark files, usable as a [`module`](#usage-as-module) or as a [CLI](#usage-as-cli).
 
-- The Database files supported are custom sqlite database files created by the SQLAlchemy ORM model found in the [`.models.py`](/src/bookmarks_converter/models.py).
+BookmarksConverter supports the converters below:
 
-- The HTML files supported are Netscape-Bookmark files from either Chrome or Firefox. The output HTML files adhere to the firefox format.
+- Bookmarkie (custom formats)
+- Chrome/Chromium
+- Firefox
 
-- The JSON files supported are the Chrome `.json` bookmarks file, the Firefox `.json` bookmarks export file, and the custom json file created by this package.
+The converters can import and export bookmarks from and to the formats listed below:
 
-To see example of the structure or layout of the `DataBase`, `HTML` or `JSON` versions supported by the packege, you can check the corresponding file in the data folder found in the [github page data](data/) or the [bookmarks_file_structure.md](bookmarks_file_structure.md).
+- Bookmarkie: `DB`, `HTML`, `JSON`
+- Chrome/Chromium: `HTML`, `JSON`
+- Firefox: `HTML`, `JSON`
+
+Notes:
+
+- Supports Netscape-Bookmark format for `HTML` files
+- The exported `HTML` files are compatible with all browsers.
+- Custom `DB` files are powered by SQLAlchemy ORM (see [`models.py`](/src/bookmarks_converter/models.py)).
+- Chrome/Chromium `JSON` files cannot be directly imported but can be placed in the appropriate location (see [bookmarks_file_structure.md - Chrome/Chromium - b. JSON](./bookmarks_file_structure.md#b-json)).
+- For examples of supported `DB`, `HTML`, or `JSON` structures and formats, refer to the [test resources](tests/resources) or [bookmarks_file_structure.md](bookmarks_file_structure.md).
+- Custom `DB` and `JSON` formats by BookmarksConverter are not browser-importable.
 
 ---
 ## Table of Contents
@@ -29,13 +41,13 @@ To see example of the structure or layout of the `DataBase`, `HTML` or `JSON` ve
     - [License](#license)
 ---
 ### Python and OS Support
-The package has been tested on Github Actions with the following OSs and Python versions:
+The package has been tested on GitHub Actions with the following OSs and Python versions:
 
-| OS \ Python      | `3.12`  | `3.11`  | `3.10`  |  `3.9`  |
-| :--------------- |:-------:|:-------:|:-------:|:-------:|
-| `macos-latest`   | &check; | &check; | &check; | &check; |
-| `ubuntu-latest`  | &check; | &check; | &check; | &check; |
-| `windows-latest` | &check; | &check; | &check; | &check; |
+| OS \ Python      | `3.12`  | `3.11`  |
+|:-----------------|:-------:|:-------:|
+| `macos-latest`   | &check; | &check; |
+| `ubuntu-latest`  | &check; | &check; |
+| `windows-latest` | &check; | &check; |
 
 
 ---
@@ -76,49 +88,69 @@ poetry run pytest
 ---
 ### Usage as Module
 ```python
-from bookmarks_converter import BookmarksConverter
+from pathlib import Path
+from bookmarks_converter import Chrome, Firefox
+from bookmarks_converter.formats import save_json
 
-# initialize the class passing in the path to the bookmarks file to convert
-bookmarks = BookmarksConverter("/path/to/bookmarks_file")
+# initialize the converter
+firefox = Firefox()
+chrome = Chrome()
 
-# parse the file passing the format of the source file; "db", "html" or "json"
-bookmarks.parse("html")
+# import the bookmarks
+input_file = Path("/path/to/input.html")
+content = firefox.from_html(input_file)
 
-# convert the bookmarks to the desired format by passing the fomrat as a string; "db", "html", or "json"
-bookmarks.convert("json")
+# convert to desired format
+output_file = Path("/path/to/output.json")
+bookmarks = chrome.as_json(content)
 
-# at this point the converted bookmarks are stored in the 'bookmarks' attribute.
-# which can be used directly or exported to a file.
-bookmarks.save()
+# finally save the bookmarks
+# there are some helper files that could be useful for saving to files
+save_json(bookmarks, output_file)
 ```
 
 ---
 ### Usage as CLI
-```python
-# Activate the virtual environment if the "bookmarks-converter" package was installed inside one.
 
-# run bookmarks-converter with the desired settings
+`bookmarks-converter` cli can be installed inside a virtual environment or using [pipx](https://github.com/pypa/pipx).
+```bash
+# bookmarks-converter usages:
+# example 1
+bookmarks-converter -i ./input_bookmarks.db --input-format 'bookmarkie/db' --output-format 'chrome/html'
 
-# bookmarks-converter input_format output_format filepath
-bookmarks-converter db json /path/to/file.db
-
-# use -h for to show the help message (shown in the code block below)
-bookmarks-converter -h
+# example 2
+bookmarks-converter -i ./some_bookmarks.html -I 'chrome/html' -o ./output_bookmarks.json -O 'firefox/json'
 ```
+
 The help message:
 ```bash
-usage: bookmarks-converter [-h] [-V] input_format output_format filepath
+# use -h for to show the help message (shown in the code block below)
+$ bookmarks-converter --help
 
-Convert your browser bookmarks file from (db, html, json) to (db, html, json).
+usage: bookmarks-converter [-h] [-V] -i INPUT -I INPUT_FORMAT [-o OUTPUT] -O OUTPUT_FORMAT
 
-positional arguments:
-  input_format   Format of the input bookmarks file. one of (db, html, json).
-  output_format  Format of the output bookmarks file. one of (db, html, json).
-  filepath       Path to bookmarks file to convert.
+Convert your browser bookmarks file.
 
-optional arguments:
-  -h, --help     show this help message and exit
-  -V, --version  show program's version number and exit
+The bookmark format is composed of two parts separated by a slash: [CONVERTER]/[FORMAT], ex. 'firefox/html'
+With the converter being one of the available converters: ('bookmarkie', 'chrome', 'firefox')
+And the format being one of the available formats: ('db', 'html', 'json')
+
+Example Usage:
+    bookmarks-converter -i ./input_bookmarks.db --input-format 'bookmarkie/db' --output-format 'chrome/html'
+    bookmarks-converter -i ./some_bookmarks.html -I 'chrome/html' -o ./output_bookmarks.json -O 'firefox/json'
+    
+
+options:
+  -h, --help            show this help message and exit
+  -V, --version         show program's version number and exit
+  -i INPUT, --input INPUT
+                        Input bookmarks file
+  -I INPUT_FORMAT, --input-format INPUT_FORMAT
+                        The bookmark format of the input bookmarks file
+  -o OUTPUT, --output OUTPUT
+                        Output bookmarks file
+  -O OUTPUT_FORMAT, --output-format OUTPUT_FORMAT
+                        The bookmark format of the output bookmarks file
 ```
 
 ---

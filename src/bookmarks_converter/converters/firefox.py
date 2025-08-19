@@ -24,6 +24,7 @@ from bookmarks_converter.util import format_html, indent_html
 MOZILLA_GUID_LENGTH = 12
 MOZILLA_PLACE_CONST = "text/x-moz-place"
 MOZILLA_CONTAINER_CONST = "text/x-moz-place-container"
+MOZILLA_SEPARATOR_CONST = "text/x-moz-place-separator"
 MOZILLA_MENU_FOLDER_HTML_TITLE = "Bookmarks Menu"
 MOZILLA_TOOLBAR_FOLDER_HTML_TITLE = "Bookmarks Toolbar"
 MOZILLA_TOOLBAR_FOLDER_HTML_FLAG = "PERSONAL_TOOLBAR_FOLDER"
@@ -336,13 +337,33 @@ class Firefox(Converter):
         """Imports the JSON Bookmarks file as a Bookmark tree."""
         with filepath.open("r", encoding="utf-8") as file:
             # use the object_hook to load the json tree as a Bookmark tree.
-            tree = json.load(file, object_hook=self._json_to_object)
+            tree = self._json_to_object(json.load(file))
         return tree
 
-    @staticmethod
-    def _json_to_object(jdict: dict) -> Bookmark:
-        """Helper function used as an object_hook for json load."""
+    def _json_to_object(self, jdict: dict) -> Bookmark:
+        """Convert json tree into a Bookmark tree."""
+        bookmarks = self._json_as_folder(jdict)
+        stack = [(bookmarks, jdict)]
 
+        while stack:
+            folder, node = stack.pop()
+            children = folder.children
+            for child in node.get("children"):
+                if child.get("type") == MOZILLA_CONTAINER_CONST:
+                    item = self._json_as_folder(child)
+                    if child.get("children"):
+                        stack.append((item, child))
+                elif child.get("type") == MOZILLA_PLACE_CONST:
+                    item = self._json_as_url(child)
+                elif child.get("type") == MOZILLA_SEPARATOR_CONST:
+                    continue
+
+                children.append(item)
+
+        return bookmarks
+
+    @staticmethod
+    def _json_as_folder(jdict: dict) -> Folder:
         kwargs = {
             "id": int(jdict.pop("id")),
             "index": jdict.pop("index"),
@@ -350,22 +371,27 @@ class Firefox(Converter):
             "date_added": int(jdict.pop("dateAdded", 0)),
             "date_modified": int(jdict.pop("lastModified", 0)),
             "guid": jdict.pop("guid", str(uuid4())),
+            "children": [],
+        }
+        special_folder = jdict.pop("root", "")
+        if special_folder:
+            kwargs["special_folder"] = FolderRoot[special_folder].value
+
+        return Folder(**kwargs)
+
+    @staticmethod
+    def _json_as_url(jdict: dict) -> Url:
+        kwargs = {
+            "id": int(jdict.pop("id")),
+            "index": jdict.pop("index"),
+            "title": jdict.pop("title", None),
+            "date_added": int(jdict.pop("dateAdded", 0)),
+            "date_modified": int(jdict.pop("lastModified", 0)),
+            "guid": jdict.pop("guid", str(uuid4())),
+            "url": jdict.pop("uri"),
+            "icon": jdict.pop("icon", ""),
+            "icon_uri": jdict.pop("iconuri", ""),
+            "tags": jdict.pop("tags", []),
         }
 
-        type_ = jdict.pop("type")
-        if type_ == MOZILLA_CONTAINER_CONST:
-            kwargs["children"] = jdict.pop("children", [])
-
-            special_folder = jdict.pop("root", "")
-            if special_folder:
-                kwargs["special_folder"] = FolderRoot[special_folder].value
-
-            return Folder(**kwargs)
-        elif type_ == MOZILLA_PLACE_CONST:
-            kwargs["url"] = jdict.pop("uri")
-            kwargs["icon"] = jdict.pop("icon", "")
-            kwargs["icon_uri"] = jdict.pop("iconuri", "")
-            kwargs["tags"] = jdict.pop("tags", [])
-            return Url(**kwargs)
-        else:
-            raise NotImplementedError(f"Unsupported type {type_}")
+        return Url(**kwargs)

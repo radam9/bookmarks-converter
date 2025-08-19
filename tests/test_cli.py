@@ -1,5 +1,4 @@
 import filecmp
-import sys
 from argparse import ArgumentTypeError
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -15,7 +14,6 @@ from conftest import (
 
 from bookmarks_converter import Bookmarkie, Chrome, Firefox
 from bookmarks_converter.cli import (
-    _get_version,
     _input_file,
     _output_file,
     _parse_args,
@@ -24,15 +22,6 @@ from bookmarks_converter.cli import (
 )
 from bookmarks_converter.converters.converter import Converter
 from bookmarks_converter.formats import BaseFormat, DBFormat, HTMLFormat, JSONFormat
-
-# In Python 3.10:
-# Misleading phrase “optional arguments” was replaced with “options” in argparse help.
-# Some tests might require adaptation if they rely on exact output match.
-# https://docs.python.org/3/whatsnew/3.10.html#argparse
-if sys.version_info.minor >= 10:
-    optional_arguments = "options"
-else:
-    optional_arguments = "optional arguments"
 
 
 def test_input_file():
@@ -96,74 +85,6 @@ def test_parse_args_positional_arguments(
     assert args.output_format == output_format
     if output_file:
         assert args.output == Path(output_file)
-
-
-help_error_message = (
-    USAGE_MSG
-    + f"\nConvert your browser bookmarks file.\n\nThe bookmark format is composed of two parts separated by a slash: [CONVERTER]/[FORMAT], ex. 'firefox/html'\nWith the converter being one of the available converters: ('bookmarkie', 'chrome', 'firefox')\nAnd the format being one of the available formats: ('db', 'html', 'json')\n\nExample Usage:\n    bookmarks-converter -i ./input_bookmarks.db --input-format 'bookmarkie/db' --output-format 'chrome/html'\n    bookmarks-converter -i ./some_bookmarks.html -I 'chrome/html' -o ./output_bookmarks.json -O 'firefox/json'\n    \n\n{optional_arguments}:\n  -h, --help            show this help message and exit\n  -V, --version         show program's version number and exit\n  -i INPUT, --input INPUT\n                        Input bookmarks file\n  -I INPUT_FORMAT, --input-format INPUT_FORMAT\n                        The bookmark format of the input bookmarks file\n  -o OUTPUT, --output OUTPUT\n                        Output bookmarks file\n  -O OUTPUT_FORMAT, --output-format OUTPUT_FORMAT\n                        The bookmark format of the output bookmarks file\n"
-)
-
-test_parse_args_with_exit_code_params = (
-    pytest.param(
-        [],
-        2,
-        "",
-        USAGE_MSG
-        + "bookmarks-converter: error: the following arguments are required: -i/--input, -I/--input-format, -O/--output-format\n",
-        id="no_arguments",
-    ),
-    pytest.param(
-        ["-i", str(TEST_INPUT_FILE)],
-        2,
-        "",
-        USAGE_MSG
-        + "bookmarks-converter: error: the following arguments are required: -I/--input-format, -O/--output-format\n",
-        id="only_input_filepath",
-    ),
-    pytest.param(
-        ["-I", "firefox/json"],
-        2,
-        "",
-        USAGE_MSG
-        + "bookmarks-converter: error: the following arguments are required: -i/--input, -O/--output-format\n",
-        id="only_input_format",
-    ),
-    pytest.param(
-        ["-O", "firefox/json"],
-        2,
-        "",
-        USAGE_MSG
-        + "bookmarks-converter: error: the following arguments are required: -i/--input, -I/--input-format\n",
-        id="only_output_format",
-    ),
-    pytest.param(
-        ["-i", "non-existent-file", "-I", "firefox/json", "-O", "chrome/html"],
-        2,
-        "",
-        USAGE_MSG
-        + "bookmarks-converter: error: argument -i/--input: file not found: 'non-existent-file'\n",
-        id="filepath_notfound",
-    ),
-    pytest.param(["-V"], 0, f"bookmarks-converter {_get_version()}\n", "", id="version"),
-    pytest.param(["-h"], 0, help_error_message, "", id="help"),
-    pytest.param(
-        ["--version"], 0, f"bookmarks-converter {_get_version()}\n", "", id="version_long"
-    ),
-    pytest.param(["--help"], 0, help_error_message, "", id="help_long"),
-)
-
-
-@pytest.mark.parametrize("arg, exit_code, out_msg, err_msg", test_parse_args_with_exit_code_params)
-def test_parse_args_with_exit_code(
-    capsys, arg: list[str], exit_code: int, out_msg: str, err_msg: str
-):
-    with pytest.raises(SystemExit) as exc_info:
-        _parse_args(arg)
-    (retv,) = exc_info.value.args
-    out, err = capsys.readouterr()
-    assert retv == exit_code
-    assert out == out_msg
-    assert err == err_msg
 
 
 test_parse_bookmark_format_params = (

@@ -1,0 +1,512 @@
+{
+  "guid": "root________",
+  "title": "",
+  "index": 0,
+  "dateAdded": 1659184459926000,
+  "lastModified": 1719774198044000,
+  "id": 1,
+  "typeCode": 2,
+  "type": "text/x-moz-place-container",
+  "root": "placesRoot",
+  "children": [
+    {
+      "guid": "menu________",
+      "title": "menu",
+      "index": 0,
+      "dateAdded": 1659184459926000,
+      "lastModified": 1678636323216000,
+      "id": 2,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "bookmarksMenuFolder",
+      "children": [
+        {
+          "guid": "fLBbxHpkHXrx",
+          "title": "Cars",
+          "index": 0,
+          "dateAdded": 1678636323216000,
+          "lastModified": 1719772224487000,
+          "id": 7,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "D7oNqJF2nvDL",
+              "title": "Audi.com – the international Audi website | audi.com",
+              "index": 0,
+              "dateAdded": 1599750511000000,
+              "lastModified": 1719772224487000,
+              "id": 8,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.audi.com/en.html"
+            },{
+              "guid": "xR43PyxpcwiZ",
+              "title": "",
+              "index": 17,
+              "dateAdded": 1754222047578000,
+              "lastModified": 1754222047578000,
+              "id": 3511,
+              "typeCode": 3,
+              "type": "text/x-moz-place-separator"
+            },
+            {
+              "guid": "664aDUw5Ryxh",
+              "title": "BMW.com | The international BMW Website",
+              "index": 1,
+              "dateAdded": 1599750498000000,
+              "lastModified": 1599750498000000,
+              "id": 9,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.bmw.com/en/index.html"
+            },
+            {
+              "guid": "Ks46jfeOrwIa",
+              "title": "New Cars, Trucks, SUVs & Hybrids | Toyota Official Site",
+              "index": 2,
+              "dateAdded": 1599750526000000,
+              "lastModified": 1599750526000000,
+              "id": 10,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.toyota.com/"
+            }
+          ]
+        },
+        {
+          "guid": "XOAD40IEJSUJ",
+          "title": "Find your inspiration. | Flickr",
+          "index": 1,
+          "dateAdded": 1599759023000000,
+          "lastModified": 1678636396119000,
+          "id": 11,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://www.flickr.com/"
+        },
+        {
+          "guid": "7ueNtN1tGpnU",
+          "title": "Yahoo",
+          "index": 2,
+          "dateAdded": 1599759065000000,
+          "lastModified": 1678636396119000,
+          "id": 12,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://www.yahoo.com/"
+        }
+      ]
+    },
+    {
+      "guid": "toolbar_____",
+      "title": "toolbar",
+      "index": 1,
+      "dateAdded": 1659184459926000,
+      "lastModified": 1678636323216000,
+      "id": 3,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "toolbarFolder",
+      "children": [
+        {
+          "guid": "8wS0vRSmkr2i",
+          "title": "Getting Started",
+          "index": 0,
+          "dateAdded": 1599750431000000,
+          "lastModified": 1678636338962000,
+          "id": 13,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://www.mozilla.org/en-US/firefox/central/"
+        },
+        {
+          "guid": "6UcabsF_yFpL",
+          "title": "Mozilla Firefox",
+          "index": 1,
+          "dateAdded": 1678636323216000,
+          "lastModified": 1678636338962000,
+          "id": 14,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "FEDY-zTg_8TS",
+              "title": "Help and Tutorials",
+              "index": 0,
+              "dateAdded": 1599750431000000,
+              "lastModified": 1599750431000000,
+              "id": 15,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://support.mozilla.org/en-US/products/firefox"
+            },
+            {
+              "guid": "VMZk88htMgrO",
+              "title": "Customize Firefox",
+              "index": 1,
+              "dateAdded": 1599750431000000,
+              "lastModified": 1599750431000000,
+              "id": 16,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+            },
+            {
+              "guid": "EDWVT5LwSRbR",
+              "title": "Get Involved",
+              "index": 2,
+              "dateAdded": 1599750431000000,
+              "lastModified": 1599750431000000,
+              "id": 17,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.mozilla.org/en-US/contribute/"
+            },
+            {
+              "guid": "UQPMUmjT9agb",
+              "title": "About Us",
+              "index": 3,
+              "dateAdded": 1599750431000000,
+              "lastModified": 1599750431000000,
+              "id": 18,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.mozilla.org/en-US/about/"
+            }
+          ]
+        },
+        {
+          "guid": "zkhOfWPTlXes",
+          "title": "Ubuntu",
+          "index": 2,
+          "dateAdded": 1599750431000000,
+          "lastModified": 1719772096193000,
+          "id": 19,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "http://www.ubuntu.com/"
+        },
+        {
+          "guid": "v0llQJyol-N3",
+          "title": "Ubuntu Wiki (community-edited website)",
+          "index": 3,
+          "dateAdded": 1599750431000000,
+          "lastModified": 1719772096193000,
+          "id": 20,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "http://wiki.ubuntu.com/"
+        },
+        {
+          "guid": "bXCwsH8svCTJ",
+          "title": "Programming",
+          "index": 4,
+          "dateAdded": 1678636323216000,
+          "lastModified": 1719772430463000,
+          "id": 21,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "1-QBgZ8vzSH2",
+              "title": "Languages",
+              "index": 0,
+              "dateAdded": 1678636323216000,
+              "lastModified": 1719772355715000,
+              "id": 22,
+              "typeCode": 2,
+              "type": "text/x-moz-place-container",
+              "children": [
+                {
+                  "guid": "YAn8w_HQzBLj",
+                  "title": "Welcome to Python.org",
+                  "index": 0,
+                  "dateAdded": 1599750592000000,
+                  "lastModified": 1599750592000000,
+                  "id": 23,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://www.python.org/"
+                },
+                {
+                  "guid": "NrbzmQHCqn8T",
+                  "title": "The Go Programming Language",
+                  "index": 1,
+                  "dateAdded": 1599751082000000,
+                  "lastModified": 1719772355715000,
+                  "id": 24,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://golang.org/"
+                },
+                {
+                  "guid": "Ie8JMjNqYaMt",
+                  "title": "cplusplus.com - The C++ Resources Network",
+                  "index": 2,
+                  "dateAdded": 1599750611000000,
+                  "lastModified": 1599750611000000,
+                  "id": 25,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://www.cplusplus.com/"
+                }
+              ]
+            },
+            {
+              "guid": "aX6kQNqDGIVU",
+              "title": "Web Services",
+              "index": 1,
+              "dateAdded": 1678636323216000,
+              "lastModified": 1719772430463000,
+              "id": 26,
+              "typeCode": 2,
+              "type": "text/x-moz-place-container",
+              "children": [
+                {
+                  "guid": "-CZWJ9U-Hqu3",
+                  "title": "Amazon Web Services (AWS) - Cloud Computing Services",
+                  "index": 0,
+                  "dateAdded": 1599757502000000,
+                  "lastModified": 1599757502000000,
+                  "id": 27,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://aws.amazon.com/"
+                },
+                {
+                  "guid": "1DDbqDboLszd",
+                  "title": "Cloud Computing Services  |  Google Cloud",
+                  "index": 1,
+                  "dateAdded": 1599757520000000,
+                  "lastModified": 1599757520000000,
+                  "id": 28,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://cloud.google.com/"
+                },
+                {
+                  "guid": "w3WO8KV0SBNh",
+                  "title": "DigitalOcean – The developer cloud",
+                  "index": 2,
+                  "dateAdded": 1599757569000000,
+                  "lastModified": 1599757569000000,
+                  "id": 29,
+                  "typeCode": 1,
+                  "type": "text/x-moz-place",
+                  "uri": "https://www.digitalocean.com/"
+                }
+              ]
+            },
+            {
+              "guid": "Gms_bU6aq9jn",
+              "title": "Achieve mastery through challenge | Codewars",
+              "index": 2,
+              "dateAdded": 1599757671000000,
+              "lastModified": 1599757671000000,
+              "id": 30,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.codewars.com/"
+            },
+            {
+              "guid": "6q8viVIDsrSD",
+              "title": "Learn to code at home | freeCodeCamp.org",
+              "index": 3,
+              "dateAdded": 1599758045000000,
+              "lastModified": 1599758045000000,
+              "id": 31,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.freecodecamp.org/"
+            },
+            {
+              "guid": "r41VXBpJFL1w",
+              "title": "Learn to Code - for Free | Codecademy",
+              "index": 4,
+              "dateAdded": 1599758063000000,
+              "lastModified": 1599758063000000,
+              "id": 32,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.codecademy.com/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "unfiled_____",
+      "title": "unfiled",
+      "index": 3,
+      "dateAdded": 1659184459926000,
+      "lastModified": 1678636323216000,
+      "id": 5,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "unfiledBookmarksFolder",
+      "children": [
+        {
+          "guid": "xxbEjyQRRiE8",
+          "title": "Social",
+          "index": 0,
+          "dateAdded": 1678636323216000,
+          "lastModified": 1719772056192000,
+          "id": 33,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "hyC7lvMykc3J",
+              "title": "Facebook - Log In or Sign Up",
+              "index": 0,
+              "dateAdded": 1599750807000000,
+              "lastModified": 1599750807000000,
+              "id": 34,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.facebook.com/"
+            },
+            {
+              "guid": "w135N9qc4RZC",
+              "title": "Discord | Your Place to Talk and Hang Out",
+              "index": 1,
+              "dateAdded": 1599750947000000,
+              "lastModified": 1599750947000000,
+              "id": 35,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://discord.com/"
+            },
+            {
+              "guid": "A9X2uL1DMFGr",
+              "title": "LinkedIn: Log In or Sign Up",
+              "index": 2,
+              "dateAdded": 1599750941000000,
+              "lastModified": 1719772054806000,
+              "id": 36,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://www.linkedin.com/"
+            }
+          ]
+        },
+        {
+          "guid": "ge8nW0vrCMqU",
+          "title": "reddit: the front page of the internet",
+          "index": 1,
+          "dateAdded": 1599750922000000,
+          "lastModified": 1678636423146000,
+          "id": 37,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://www.reddit.com/"
+        },
+        {
+          "guid": "Hg9Lm3wrbtge",
+          "title": "Twitter. It’s what’s happening / Twitter",
+          "index": 2,
+          "dateAdded": 1599750795000000,
+          "lastModified": 1719772024914000,
+          "id": 38,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://twitter.com/?lang=en"
+        },
+        {
+          "guid": "YXE4WCVq2rqn",
+          "title": "Instagram",
+          "index": 3,
+          "dateAdded": 1599750817000000,
+          "lastModified": 1719772024914000,
+          "id": 39,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://www.instagram.com/?hl=en"
+        }
+      ]
+    },
+    {
+      "guid": "mobile______",
+      "title": "mobile",
+      "index": 4,
+      "dateAdded": 1659184459939000,
+      "lastModified": 1719774198044000,
+      "id": 6,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "mobileFolder",
+      "children": [
+        {
+          "guid": "xNeXmkB1vy4F",
+          "title": "Version Control and Testing",
+          "index": 0,
+          "dateAdded": 1678636323216000,
+          "lastModified": 1719772305855000,
+          "id": 40,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "gdD2z6Crcv3Z",
+              "title": "The world’s leading software development platform · GitHub",
+              "index": 0,
+              "dateAdded": 1599757380000000,
+              "lastModified": 1599757380000000,
+              "id": 41,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://github.com/"
+            },
+            {
+              "guid": "1AMrV2ergp3M",
+              "title": "Projects · Explore · GitLab",
+              "index": 1,
+              "dateAdded": 1599757389000000,
+              "lastModified": 1599757389000000,
+              "id": 42,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://gitlab.com/explore"
+            },
+            {
+              "guid": "BE1D-3jrUMdG",
+              "title": "Bitbucket | The Git solution for professional teams",
+              "index": 2,
+              "dateAdded": 1599757432000000,
+              "lastModified": 1599757432000000,
+              "id": 43,
+              "typeCode": 1,
+              "type": "text/x-moz-place",
+              "uri": "https://bitbucket.org/product"
+            }
+          ]
+        },
+        {
+          "guid": "MvUJOOOzplCg",
+          "title": "Continuous Integration and Delivery - CircleCI",
+          "index": 1,
+          "dateAdded": 1719774141976000,
+          "lastModified": 1719774141976000,
+          "id": 44,
+          "typeCode": 1,
+          "iconuri": "https://d3r49iyjzglexf.cloudfront.net/android-chrome-512x512-636549fcf54150d3184aa6e8395d79ca9bcdc9278210e947ce093372cc2004a4.png",
+          "type": "text/x-moz-place",
+          "uri": "https://circleci.com/"
+        },
+        {
+          "guid": "b8XAg5hcnYoY",
+          "title": "Jenkins",
+          "index": 2,
+          "dateAdded": 1719774198044000,
+          "lastModified": 1719774198044000,
+          "id": 45,
+          "typeCode": 1,
+          "iconuri": "https://www.jenkins.io/apple-touch-icon.png",
+          "type": "text/x-moz-place",
+          "uri": "https://www.jenkins.io/"
+        }
+      ]
+    }
+  ]
+}

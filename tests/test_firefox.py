@@ -1,7 +1,12 @@
+from pathlib import Path
 from uuid import uuid4
 
 import pytest
-from conftest import TEST_FILE_FIREFOX_HTML, TEST_FILE_FIREFOX_JSON
+from conftest import (
+    TEST_FILE_FIREFOX_HTML,
+    TEST_FILE_FIREFOX_JSON,
+    TEST_FILE_FIREFOX_JSON_WITH_SEPARATOR,
+)
 from resources.bookmarks_firefox import bookmarks_html, bookmarks_json
 
 from bookmarks_converter.converters.firefox import (
@@ -366,8 +371,11 @@ class TestFirefox:
         result = self.firefox._ensure_mozilla_guid(guid)
         assert len(result) == MOZILLA_GUID_LENGTH
 
-    def test_from_json(self):
-        result = self.firefox.from_json(TEST_FILE_FIREFOX_JSON)
+    @pytest.mark.parametrize(
+        "file_path", (TEST_FILE_FIREFOX_JSON, TEST_FILE_FIREFOX_JSON_WITH_SEPARATOR)
+    )
+    def test_from_json(self, file_path: Path):
+        result = self.firefox.from_json(file_path)
 
         expected = bookmarks_json()
 
@@ -399,7 +407,7 @@ class TestFirefox:
 
         id_ = int(folder_["id"])
         name = folder_["title"]
-        folder = Firefox._json_to_object(folder_)
+        folder = Firefox._json_as_folder(folder_)
         assert isinstance(folder, Folder)
         assert isinstance(folder.children, list)
         assert isinstance(folder.date_added, int)
@@ -425,7 +433,7 @@ class TestFirefox:
         id_ = int(url_["id"])
         title = url_["title"]
         url_address = url_["uri"]
-        url = Firefox._json_to_object(url_)
+        url = Firefox._json_as_url(url_)
         assert isinstance(url, Url)
         assert isinstance(url.date_added, int)
         assert isinstance(url.date_modified, int)

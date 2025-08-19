@@ -11,6 +11,7 @@ TEST_ROOT_DIR = Path(__file__).resolve().parent
 DATA_DIR = TEST_ROOT_DIR.joinpath("resources")
 
 TEST_FILE_FIREFOX_JSON = DATA_DIR.joinpath("bookmarks_firefox.json")
+TEST_FILE_FIREFOX_JSON_WITH_SEPARATOR = DATA_DIR.joinpath("bookmarks_firefox_with_separator.json")
 TEST_FILE_FIREFOX_HTML = DATA_DIR.joinpath("bookmarks_firefox.html")
 TEST_FILE_CHROME_JSON = DATA_DIR.joinpath("bookmarks_chrome.json")
 TEST_FILE_CHROME_HTML = DATA_DIR.joinpath("bookmarks_chrome.html")

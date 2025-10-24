@@ -43,11 +43,11 @@ Notes:
 ### Python and OS Support
 The package has been tested on GitHub Actions with the following OSs and Python versions:
 
-| OS \ Python      | `3.12`  | `3.11`  |
-|:-----------------|:-------:|:-------:|
-| `macos-latest`   | &check; | &check; |
-| `ubuntu-latest`  | &check; | &check; |
-| `windows-latest` | &check; | &check; |
+| OS \ Python      | `3.11`  | `3.12`  | `3.13`  | `3.14`  |
+|:-----------------|:-------:|:-------:|:-------:|:-------:|
+| `macos-latest`   | &check; | &check; | &check; | &check; |
+| `ubuntu-latest`  | &check; | &check; | &check; | &check; |
+| `windows-latest` | &check; | &check; | &check; | &check; |
 
 
 ---

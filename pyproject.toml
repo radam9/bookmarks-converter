@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bookmarks-converter"
-version = "1.0.1"
+version = "1.0.2"
 description = "Convert browser bookmarks files."
 authors = ["Adam Saleh <radam9@gmail.com>"]
 license = "MIT"

@@ -289,8 +289,8 @@ class HTMLBookmark(Tag):
         return self.attrs.get("icon_uri", "")
 
     @property
-    def id(self):
-        return self.attrs.get("id")
+    def id(self) -> int:
+        return int(self.attrs.get("id"))
 
     @id.setter
     def id(self, new_id: int):
@@ -302,7 +302,7 @@ class HTMLBookmark(Tag):
 
     @property
     def index(self) -> int:
-        return self.attrs.get("index")
+        return self.attrs.get("index", 0)
 
     @property
     def title(self) -> str:

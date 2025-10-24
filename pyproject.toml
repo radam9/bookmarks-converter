@@ -39,7 +39,7 @@ python = "^3.11"
 beautifulsoup4 = "^4.10.0"
 SQLAlchemy = "^2.0.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pylint = "^3.2.6"
 pytest = "^8.3.2"
 black = "^24.8.0"

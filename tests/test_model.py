@@ -116,7 +116,7 @@ def url_attrs():
         "title": "Google",
         "add_date": 0,
         "last_modified": 0,
-        "icon": None,
+        "icon": "",
         "icon_uri": "https://www.example.com/icon",
         "tags": None,
     }

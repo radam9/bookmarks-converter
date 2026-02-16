@@ -22,29 +22,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Set up python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install and configure Poetry
-        uses: snok/install-poetry@v1.4.1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-      # - name: Load cached venv
-      #   id: cached-poetry-dependencies
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: .venv
-      #     key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
-        run: poetry install
-        # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: uv sync --group dev
 
       - name: Run pytest
-        run: |
-          poetry run pytest -v
+        run: uv run pytest -v
 
   deploy:
     name: Deploy
@@ -56,32 +43,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup python
-        id: setup-python
-        uses: actions/setup-python@v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.12'
+          python-version: "3.14"
 
-      - name: Install and configure Poetry
-        uses: snok/install-poetry@v1.4.1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Build and Publish to PYPI
+      - name: Build and Publish to PyPI
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          poetry install
-          echo `poetry version` | sed 's/bookmarks-converter /BUILD_VERSION=/' >> $GITHUB_ENV
-          poetry config pypi-token.pypi "$PYPI_TOKEN"
-          poetry publish --build
+          uv build
+          uv publish --token "$PYPI_TOKEN"
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.BUILD_VERSION }}
-          release_name: ${{ env.BUILD_VERSION }}
+        run: |
+          VERSION=$(uv version --short)
+          gh release create "$VERSION" --title "$VERSION" --generate-notes
+

@@ -74,15 +74,15 @@ git clone https://github.com/radam9/bookmarks-converter.git
 # Cloning with SSH
 git clone git@github.com:radam9/bookmarks-converter.git
 ```
-then you create and install the dependencies using [`Poetry`](https://python-poetry.org/).
+then you create and install the dependencies using [`uv`](https://docs.astral.sh/uv/).
 
 ```bash
 # navigate to repo's folder
 cd bookmarks-converter
 # install the dependencies
-poetry install
+uv sync --group dev
 # run the tests
-poetry run pytest
+uv run pytest
 ```
 
 ---

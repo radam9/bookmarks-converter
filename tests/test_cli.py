@@ -1,4 +1,5 @@
 import filecmp
+import importlib.metadata
 from argparse import ArgumentTypeError
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -14,6 +15,7 @@ from conftest import (
 
 from bookmarks_converter import Bookmarkie, Chrome, Firefox
 from bookmarks_converter.cli import (
+    _get_version,
     _input_file,
     _output_file,
     _parse_args,
@@ -231,3 +233,15 @@ def test_main_error(capsys, args: list[str], err_msg: str):
     assert retv == 2
     assert out == ""
     assert err == err_msg
+
+def test_get_version_without_installed_metadata(monkeypatch):
+    def _missing(name):
+        raise importlib.metadata.PackageNotFoundError(name)
+
+    monkeypatch.setattr(importlib.metadata, "version", _missing)
+    assert _get_version() == "unknown"
+
+
+def test_get_version_with_installed_metadata(monkeypatch):
+    monkeypatch.setattr(importlib.metadata, "version", lambda name: "1.2.3")
+    assert _get_version() == "1.2.3"

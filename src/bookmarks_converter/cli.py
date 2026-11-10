@@ -13,7 +13,10 @@ from bookmarks_converter.formats import FORMATS, BaseFormat, Format, _new_file_n
 
 def _get_version():
     """Get bookmarks-converter version."""
-    return importlib.metadata.version("bookmarks-converter")
+    try:
+        return importlib.metadata.version("bookmarks-converter")
+    except importlib.metadata.PackageNotFoundError:
+        return "unknown"
 
 
 def _input_file(filepath: str) -> Path:
